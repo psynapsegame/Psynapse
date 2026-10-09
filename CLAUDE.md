@@ -29,7 +29,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - La carte du jour affiche un anneau « x/20 » et la série de jours (`M.streak`, `M.smax`).
 - XP : **+5** par bonne réponse, **+2** par mauvaise (vérifié).
 - 9 catégories (`CATS`) plus « Tout mélanger ». Le filtre par années passe par `M.ys` et `on(i)`.
-- « Réviser un thème » (`thm()`) propose deux modes : S'entraîner, ou Lire en fiche (`fiche()`). Il y a 59 synthèses `FSY` (vérifié), et les résumés d'auteurs sont dans `AUTH`.
+- « Réviser un thème » (`thm()`) propose deux modes : S'entraîner, ou Lire en fiche (`fiche()`). Il y a des synthèses `FSY` pour chaque sous-thème non-auteur (62 en v92), et les résumés d'auteurs sont dans `AUTH`.
 
 ### 2.3 QCM
 - `qzGo()` construit la série : nombre de questions `QN` (20 par défaut) et catégories `QS`.
@@ -39,7 +39,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 
 ### 2.4 Cortex (`PP`, `PQ`)
 - Il faut répondre en un mot à une question par catégorie, pour remplir un camembert 3D (`pie3()`).
-- Le format de `PQ` est `[cat, année(1-5), question, [réponses acceptées]]`. Il y a **511 entrées** (v91). Répartition par année : 96, 163, 109, 83, 60.
+- Le format de `PQ` est `[cat, année(1-5), question, [réponses acceptées]]`. Il y a **693 entrées** (v92). Répartition par année : 138, 215, 152, 111, 77 ; de 74 à 89 questions par catégorie.
 - La correction est tolérante (`pOk`) : accents ignorés, distance de Levenshtein, préfixe.
 - Une erreur coûte +10 s. Chaque réponse met le chrono en pause jusqu'au bouton « Continuer ». Bonne réponse : +10 XP. Fin de partie : +50 XP et confettis.
 - Records : `ppHist` et `M.pr`. Sauvegarde et reprise : `ppSave`, `ppResume`, `M.ppg`.
@@ -93,6 +93,15 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - **Couverture** : 77 cartes sur des notions qui manquaient totalement (repérées en confrontant la banque à environ 670 notions classiques), plus 40 questions Cortex. Avant d'ajouter une carte, vérifier l'absence de doublon avec une recherche sur `nrm(sous-thème + question + réponse)`.
 - **Labo** : 32 listes DRM (`DRL`) et 46 mots distracteurs (`DRP`), 7 règles Go/No-Go (`GNR`), 10 formes pour la cécité au changement (`CBS`, indices calculés avec `CBS.length`), 14 caractères pour la rotation mentale (`RML`, sans axe de symétrie miroir), 10 stratégies au dilemme du prisonnier (`PDS`). `lbPick(clé, n)` évite de retomber sur une liste, une règle ou un adversaire récent (historique dans `M.lr`).
 
+### 2.15 Ajouts v92
+- **Cas cliniques** : `VG` (`{c, y, t, v, q, o:[4 options, la bonne en premier], e}`), écrans `vgList()`, `vgShow(k)`, `vgA(j)`, `vgRnd()`. Les options sont mélangées à l'affichage. Filtre par années via `M.ys`. Cas réussis dans `M.vg[k]`, +5 XP la première fois.
+- **Atlas du cerveau** : `ATR` (13 zones : 6 lobes et structures en mode 0, 7 aires corticales en mode 1), `atSvg(mode, surbrillance, états)`, quiz `atGo`/`atQ`/`atA` (toucher la zone) / `atF` (retrouver la fonction). Record dans `M.atl`, +2 XP par bonne réponse. Les lobes sont découpés par `clip-path` sur le contour `ATO`.
+- **Confusions** : 24 paires (6 ajoutées).
+- **Synthèses** : `FSY` couvre maintenant tous les sous-thèmes non-auteurs (62).
+- **Clavier Cortex** : plus de `backdrop-filter` sur `.vkb` (recalcul du flou coûteux sur iOS à chaque touche), calque isolé, pas de transition sur les touches, bulle positionnée en `transform` et géométrie lue avant les écritures (`vkGeo`).
+- **Labo** : couleurs alignées sur la palette des catégories (Stroop `SCA`, cécité `CBC`, Go/No-Go `GNR`) ; boutons du dilemme en style « verre » vert et rouge.
+- **Frise** : dates relues ; Ekman (mort en 2025) et Rosenthal (mort en 2024) corrigés.
+
 ## 3. Architecture
 
 ### 3.1 Fichiers
@@ -137,7 +146,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Polices : Plus Jakarta Sans pour l'interface, Fraunces pour les titres et les questions.
 - Couleurs des catégories : toujours passer par `cat(id)`, et elles doivent rester distinctes. Cognition #7E86FF, Dév #FF8A3D, Sociale #FF63B0, Neuro #3DD97A, Neuropsy #25E0D0, Clinique #4FA8FF, Appliquée #B5E04A, Méthodo #C77BFF, Auteurs #FF5468.
 - **Pas de mode clair** : refusé par le propriétaire. Respecter `prefers-reduced-motion` et `M.rm`.
-- Cartes de menu (`.qa2 button`) : toutes identiques. Ordre : Réviser un thème, Confusions fréquentes, Histoire, Mes cartes, Mes erreurs.
+- Cartes de menu (`.qa2 button`) : toutes identiques. Ordre : Réviser un thème, Confusions fréquentes, Cas cliniques, Atlas du cerveau, Histoire, Mes cartes, Mes erreurs.
 - Fenêtres : `sheet()` ou `.sh`. Messages courts : `pop()`.
 - Le CSS est en couches : plus loin dans le fichier = prioritaire, avec beaucoup de `!important`.
   - Insérer le nouveau CSS juste avant `button:focus-visible{`, et le nouveau JS juste avant `function lvTier(k){` (une seule occurrence de chacun, vérifié).
@@ -150,7 +159,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Cortex : la réponse tient en un mot, avec ses variantes acceptées.
 
 ### 4.3 Cache — à chaque modification de `index.html`
-- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v91).
+- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v92).
 - La stratégie est « réseau d'abord ». GoatCounter est ignoré. Les chemins doivent rester **relatifs**.
 
 ## 5. Hébergement
