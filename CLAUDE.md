@@ -39,7 +39,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 
 ### 2.4 Cortex (`PP`, `PQ`)
 - Il faut répondre en un mot à une question par catégorie, pour remplir un camembert 3D (`pie3()`).
-- Le format de `PQ` est `[cat, année(1-5), question, [réponses acceptées]]`. Il y a **471 entrées** (v90). Répartition par année : 91, 154, 93, 75, 58.
+- Le format de `PQ` est `[cat, année(1-5), question, [réponses acceptées]]`. Il y a **511 entrées** (v91). Répartition par année : 96, 163, 109, 83, 60.
 - La correction est tolérante (`pOk`) : accents ignorés, distance de Levenshtein, préfixe.
 - Une erreur coûte +10 s. Chaque réponse met le chrono en pause jusqu'au bouton « Continuer ». Bonne réponse : +10 XP. Fin de partie : +50 XP et confettis.
 - Records : `ppHist` et `M.pr`. Sauvegarde et reprise : `ppSave`, `ppResume`, `M.ppg`.
@@ -89,6 +89,10 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - **Progrès** : le calendrier d'activité et la courbe d'XP ne s'affichent qu'avec des données. **Cortex** : les 3 tuiles de règles disparaissent après la première partie.
 - **Animations** : la barre d'XP de l'en-tête était déjà animée par le wrapper `_rnd2` de `render`. Ajout : `cvBounce()` fait rebondir le compteur de séance (`#xp`) à chaque bonne réponse (`.cvb`, coupé par reduced-motion et `M.rm`).
 
+### 2.14 Ajouts v91
+- **Couverture** : 77 cartes sur des notions qui manquaient totalement (repérées en confrontant la banque à environ 670 notions classiques), plus 40 questions Cortex. Avant d'ajouter une carte, vérifier l'absence de doublon avec une recherche sur `nrm(sous-thème + question + réponse)`.
+- **Labo** : 32 listes DRM (`DRL`) et 46 mots distracteurs (`DRP`), 7 règles Go/No-Go (`GNR`), 10 formes pour la cécité au changement (`CBS`, indices calculés avec `CBS.length`), 14 caractères pour la rotation mentale (`RML`, sans axe de symétrie miroir), 10 stratégies au dilemme du prisonnier (`PDS`). `lbPick(clé, n)` évite de retomber sur une liste, une règle ou un adversaire récent (historique dans `M.lr`).
+
 ## 3. Architecture
 
 ### 3.1 Fichiers
@@ -102,7 +106,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 
 ### 3.2 Globales clés
 - `A` = `#app` et `B` = `document.body` (vérifié).
-- `D` = cartes. `BASE` = 1 477 (v90). `TR` = mauvaises réponses et `EXP` = explications ; les deux ont une entrée par carte, et sont **clés sur le texte exact de la question**.
+- `D` = cartes. `BASE` = 1 554 (v91). `TR` = mauvaises réponses et `EXP` = explications ; les deux ont une entrée par carte, et sont **clés sur le texte exact de la question**.
 - `PQ` = banque Cortex, `PCS` = ordre des catégories, `PP` = partie Cortex en cours.
 - `CATS` et `cat(id)` = catégories. `PC` = pseudo-catégorie des cartes perso.
 - `P` = progression, `M` = méta, `PR` = profils, `K` et `MK` = clés localStorage.
@@ -115,7 +119,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Carte : `[catId, "Sous-thème", "Question", "Réponse", année]`.
   - `catId` ∈ cog, dev, soc, neu, npsy, cli, app, met, aut.
   - Année de 1 à 5 ; si elle est absente, la carte compte comme L2.
-- Répartition (v90) : L1 287, L2 524, L3 259, M1 222, M2 185. Il y a 181 sous-thèmes, dont 122 auteurs pour `aut`. Le dernier bloc `D=D.concat` (neuropsychologie L1-L2) est juste avant `var BASE=D.length` ; le dernier bloc `PQ=PQ.concat` doit rester le dernier.
+- Répartition (v91) : L1 292, L2 546, L3 289, M1 239, M2 188. Il y a 184 sous-thèmes, dont 122 auteurs pour `aut` (v91 a créé « Émotion » en cog, « Psychologie légale » et « Psychologie environnementale » en app). Le dernier bloc `D=D.concat` (v91, notions absentes) est juste avant `var BASE=D.length` ; le dernier bloc `PQ=PQ.concat` doit rester le dernier.
 
 ### 3.4 Stockage (localStorage)
 - `psy-prof` : `{cur, list}`.
@@ -146,7 +150,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Cortex : la réponse tient en un mot, avec ses variantes acceptées.
 
 ### 4.3 Cache — à chaque modification de `index.html`
-- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v90).
+- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v91).
 - La stratégie est « réseau d'abord ». GoatCounter est ignoré. Les chemins doivent rester **relatifs**.
 
 ## 5. Hébergement
