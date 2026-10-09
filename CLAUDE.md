@@ -47,7 +47,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 
 ### 2.5 Labo (`LABS`, résultats dans `M.lab`)
 - 10 expériences : `stroop`, `corsi`, `drm`, `cb` (cécité au changement), `pd` (dilemme du prisonnier), `gn` (Go/No-Go), `hk` (Hick), `rm` (rotation mentale), `sp` (empan de chiffres), `ig` (Iowa Gambling).
-- Le Labo ne semble pas donner d'XP : aucun appel `xpAdd` n'y a été trouvé.
+- Chaque expérience terminée donne +10 XP, via `labEnd()` (vérifié).
 
 ### 2.6 XP, niveaux, succès
 - 20 niveaux (`LVN`). `lvXP(l)` = somme de (100 + 50·(k−1)) pour k < l. `lvUp()` affiche la montée de niveau.
