@@ -68,7 +68,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 
 ### 2.10 Histoire de la psychologie (`hist()`)
 - Frise de 122 auteurs (`AUTH`) et 40 jalons (`EVT`), avec 12 courants (`HC`), filtres et recherche. `histCards(n)` ouvre une fiche, `hist(2)` revient à la frise.
-- Les dates ont été écrites de mémoire. Seuls Kamin et Latané ont été vérifiés. Dates discutables : Seligman 1967, Lewin 1939, Erickson 1957, Ferenczi 1913.
+- Les dates ont été relues en v92 puis en v98 (§2.21).
 
 ### 2.11 Profils, transfert, réglages
 - `PR={cur,list}` : prénoms de 16 caractères maximum.
@@ -133,6 +133,12 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - **Niveau des questions** (`ysHTML`) : deux blocs encadrés `.yzs` (« Choix rapide », puis « Ou choisis à la carte » avec une aide `.yzlh`), et le rappel vers les réglages devient un bouton-carte `button.yzn`.
 - **Cas cliniques** : 67 (26 ajoutés à la fin de `VG`, surtout en L1-L2 et dans les catégories qui n'en avaient pas : cognition, sociale, neurosciences, appliquée, méthodologie). La liste est groupée par catégorie comme les confusions, triée par année puis par titre.
 
+### 2.21 Ajouts v98
+- **Relecture** de `FSY`, `AUTH` et `EVT` : 11 corrections (ordre des sous-stades sensori-moteurs de Piaget, sélection de parentèle attribuée à Hamilton, durée du trouble de l'adaptation, cortisol présenté comme une hormone, soutien social de Johnson et Hall, Pomodoro retiré des techniques efficaces, décès de Kaës en 2026, Tinbergen cofondateur, hiérarchie et non pyramide de Maslow, résumé d'Eysenck, titre français de Frankl). Les dates discutables de Seligman 1967, Lewin 1939, Erickson 1957 et Ferenczi 1913 ont été vérifiées : elles sont correctes.
+- **Cartes** : 70 cartes L1 ajoutées dans les sous-thèmes L1 les moins fournis (`BASE` = 1 624 ; L1 = 362).
+- **Confusions** : 40 paires (16 ajoutées, dont les premières en `aut`).
+- **Cas cliniques** : 79 (12 cas L1 ajoutés).
+
 ## 3. Architecture
 
 ### 3.1 Fichiers
@@ -190,7 +196,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Cortex : la réponse tient en un mot, avec ses variantes acceptées.
 
 ### 4.3 Cache — à chaque modification de `index.html`
-- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v97).
+- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v98).
 - La stratégie est « réseau d'abord ». GoatCounter est ignoré. Les chemins doivent rester **relatifs**.
 
 ## 5. Hébergement
@@ -221,7 +227,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 ## 8. Idées prévues (par priorité)
 1. Audit d'accessibilité : aria-label, contrastes, focus, cibles de 44 px, reduced-motion.
 2. ~~Confusions fréquentes~~ : fait en v90 (18 paires). On peut en ajouter dans `CF`.
-3. Relecture de `FSY` et des dates de `AUTH` et `EVT`.
+3. ~~Relecture de `FSY`, `AUTH` et `EVT`~~ : faite en v98.
 4. Enrichir les cartes et Cortex, toujours avec `TR` et `EXP` (v90 : +19 cartes de neuropsychologie L1-L2, +20 questions Cortex M1-M2).
 5. Validation sur un vrai iPhone : clavier Cortex, haptique, frise, PWA.
 6. Cortex sur très petit écran : afficher un camembert réduit ?
