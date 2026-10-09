@@ -39,7 +39,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 
 ### 2.4 Cortex (`PP`, `PQ`)
 - Il faut répondre en un mot à une question par catégorie, pour remplir un camembert 3D (`pie3()`).
-- Le format de `PQ` est `[cat, année(1-5), question, [réponses acceptées]]`. Il y a **451 entrées** (vérifié ; le brief disait environ 180). Répartition par année : 91, 154, 93, 66, 47.
+- Le format de `PQ` est `[cat, année(1-5), question, [réponses acceptées]]`. Il y a **471 entrées** (v90). Répartition par année : 91, 154, 93, 75, 58.
 - La correction est tolérante (`pOk`) : accents ignorés, distance de Levenshtein, préfixe.
 - Une erreur coûte +10 s. Chaque réponse met le chrono en pause jusqu'au bouton « Continuer ». Bonne réponse : +10 XP. Fin de partie : +50 XP et confettis.
 - Records : `ppHist` et `M.pr`. Sauvegarde et reprise : `ppSave`, `ppResume`, `M.ppg`.
@@ -47,7 +47,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 
 ### 2.5 Labo (`LABS`, résultats dans `M.lab`)
 - 10 expériences : `stroop`, `corsi`, `drm`, `cb` (cécité au changement), `pd` (dilemme du prisonnier), `gn` (Go/No-Go), `hk` (Hick), `rm` (rotation mentale), `sp` (empan de chiffres), `ig` (Iowa Gambling).
-- Le Labo ne semble pas donner d'XP : aucun appel `xpAdd` n'y a été trouvé.
+- Chaque expérience terminée donne +10 XP, via `labEnd()` (vérifié).
 
 ### 2.6 XP, niveaux, succès
 - 20 niveaux (`LVN`). `lvXP(l)` = somme de (100 + 50·(k−1)) pour k < l. `lvUp()` affiche la montée de niveau.
@@ -82,6 +82,13 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 ### 2.12 Fonctions privées — NE PAS TOUCHER
 - Les fonctions `ql…` (`qlOk`, `qlCard`, `qlFlip`, `qlBurst`, `qlDay`, `qlDec`, `qlHash`, `qlKey`) et leurs appels dans `thmS` et `exSet`. Leurs textes et leurs déclencheurs sont volontairement encodés. Ne rien changer, ne jamais les décoder ni les afficher en clair, et ne rien documenter de plus à leur sujet.
 
+### 2.13 Ajouts v90
+- **Confusions fréquentes** : `CF` (paires `{c, a, b, da, db, t, q:[[énoncé, 0|1]×4]}`), écrans `cfList()`, `cfShow(k)`, quiz `cfGo(k)`/`cfQ`/`cfA`/`cfN`. Meilleur score par paire dans `M.cf[k]`, +2 XP par bonne réponse. Ajouter une paire = l'ajouter à la fin de `CF`.
+- **Labo → cartes** : `LBL` associe chaque expérience à des sous-thèmes et à une regex ; `lbRel(id)` donne les cartes, `lbRev(id)` lance la révision. Bouton `.lbrv` en fin d'expérience.
+- **Mise en page compacte** : `.grid.cpg` (tuiles de l'accueil Révision) et `.qcg2.cpq` (pastilles du QCM), avec une variante ≤ 360 px.
+- **Progrès** : le calendrier d'activité et la courbe d'XP ne s'affichent qu'avec des données. **Cortex** : les 3 tuiles de règles disparaissent après la première partie.
+- **Animations** : la barre d'XP de l'en-tête était déjà animée par le wrapper `_rnd2` de `render`. Ajout : `cvBounce()` fait rebondir le compteur de séance (`#xp`) à chaque bonne réponse (`.cvb`, coupé par reduced-motion et `M.rm`).
+
 ## 3. Architecture
 
 ### 3.1 Fichiers
@@ -95,20 +102,20 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 
 ### 3.2 Globales clés
 - `A` = `#app` et `B` = `document.body` (vérifié).
-- `D` = cartes. `BASE` = 1 458. `TR` = mauvaises réponses et `EXP` = explications ; les deux ont 1 458 entrées, une par carte (vérifié), et sont **clés sur le texte exact de la question**.
+- `D` = cartes. `BASE` = 1 477 (v90). `TR` = mauvaises réponses et `EXP` = explications ; les deux ont une entrée par carte, et sont **clés sur le texte exact de la question**.
 - `PQ` = banque Cortex, `PCS` = ordre des catégories, `PP` = partie Cortex en cours.
 - `CATS` et `cat(id)` = catégories. `PC` = pseudo-catégorie des cartes perso.
 - `P` = progression, `M` = méta, `PR` = profils, `K` et `MK` = clés localStorage.
 - `Q` = file de révision, `ft` = réponses de la séance, `QZ`, `QS`, `QN`, `QX`, `QERR` = QCM.
 - Fonctions utiles : `render`, `setTab`, `playHTML`, `qcmHTML`, `ppHTML`, `labHTML`, `progHTML`, `start`, `ids(f)`, `on(i)`, `st(i)`, `due(i)`, `day()`, `save()`, `loadProf(n)`, `xpAdd(n)`, `lvl()`, `lvUp()`, `achChk()`, `sheet(html)`, `pop(msg)`, `ic(name)`, `esc()`, `nrm()`.
-- `fx(q, nq, na, nf)` corrige une carte. Elle est définie localement dans **deux** IIFE après les données (lignes ~2543 et ~2555).
+- `fx(q, nq, na, nf)` corrige une carte. Elle est définie localement dans deux IIFE après les données (portée locale voulue, ce n'est pas un doublon à fusionner).
 
 ### 3.3 Banque de questions
 - `var D=[...]` est suivi de nombreux blocs `D=D.concat([...])`.
 - Carte : `[catId, "Sous-thème", "Question", "Réponse", année]`.
   - `catId` ∈ cog, dev, soc, neu, npsy, cli, app, met, aut.
   - Année de 1 à 5 ; si elle est absente, la carte compte comme L2.
-- Répartition (vérifiée) : L1 278, L2 514, L3 259, M1 222, M2 185. Il y a 181 sous-thèmes, dont 122 auteurs pour `aut`.
+- Répartition (v90) : L1 287, L2 524, L3 259, M1 222, M2 185. Il y a 181 sous-thèmes, dont 122 auteurs pour `aut`. Le dernier bloc `D=D.concat` (neuropsychologie L1-L2) est juste avant `var BASE=D.length` ; le dernier bloc `PQ=PQ.concat` doit rester le dernier.
 
 ### 3.4 Stockage (localStorage)
 - `psy-prof` : `{cur, list}`.
@@ -116,7 +123,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - `psy-meta:<prénom>` : `M`, avec notamment xp, streak, smax, last, h, ys, yr, cgu, tu, ex, snd, rm, ach, er, ep, erf, cc, lab, pr, pg, ppg, qzg, qh, bkd.
 - `psy-a2hs`.
 - La migration des anciennes clés sans prénom se fait dans `loadProf`.
-- `dfCard()` renvoie `""` : c'est du code mort, à laisser avec `M.dd`.
+- L'ancien défi du jour (`dfCard`, `dfGo`…, `DF`, `rng`) a été supprimé en v90. La clé `M.dd` peut encore exister chez des utilisateurs : sans effet.
 
 ## 4. Conventions
 
@@ -126,7 +133,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Polices : Plus Jakarta Sans pour l'interface, Fraunces pour les titres et les questions.
 - Couleurs des catégories : toujours passer par `cat(id)`, et elles doivent rester distinctes. Cognition #7E86FF, Dév #FF8A3D, Sociale #FF63B0, Neuro #3DD97A, Neuropsy #25E0D0, Clinique #4FA8FF, Appliquée #B5E04A, Méthodo #C77BFF, Auteurs #FF5468.
 - **Pas de mode clair** : refusé par le propriétaire. Respecter `prefers-reduced-motion` et `M.rm`.
-- Cartes de menu (`.qa2 button`) : toutes identiques. Ordre : Réviser un thème, Histoire, Mes cartes, Mes erreurs.
+- Cartes de menu (`.qa2 button`) : toutes identiques. Ordre : Réviser un thème, Confusions fréquentes, Histoire, Mes cartes, Mes erreurs.
 - Fenêtres : `sheet()` ou `.sh`. Messages courts : `pop()`.
 - Le CSS est en couches : plus loin dans le fichier = prioritaire, avec beaucoup de `!important`.
   - Insérer le nouveau CSS juste avant `button:focus-visible{`, et le nouveau JS juste avant `function lvTier(k){` (une seule occurrence de chacun, vérifié).
@@ -139,7 +146,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Cortex : la réponse tient en un mot, avec ses variantes acceptées.
 
 ### 4.3 Cache — à chaque modification de `index.html`
-- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v89).
+- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v90).
 - La stratégie est « réseau d'abord ». GoatCounter est ignoré. Les chemins doivent rester **relatifs**.
 
 ## 5. Hébergement
@@ -169,9 +176,9 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 
 ## 8. Idées prévues (par priorité)
 1. Audit d'accessibilité : aria-label, contrastes, focus, cibles de 44 px, reduced-motion.
-2. Écran « Confusions fréquentes », qui compare côte à côte des notions souvent mélangées.
+2. ~~Confusions fréquentes~~ : fait en v90 (18 paires). On peut en ajouter dans `CF`.
 3. Relecture de `FSY` et des dates de `AUTH` et `EVT`.
-4. Enrichir Cortex (années 4 et 5) et les cartes, toujours avec `TR` et `EXP`.
+4. Enrichir les cartes et Cortex, toujours avec `TR` et `EXP` (v90 : +19 cartes de neuropsychologie L1-L2, +20 questions Cortex M1-M2).
 5. Validation sur un vrai iPhone : clavier Cortex, haptique, frise, PWA.
 6. Cortex sur très petit écran : afficher un camembert réduit ?
 7. Faire vivre la section Histoire au-delà de la frise.
