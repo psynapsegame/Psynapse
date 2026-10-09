@@ -1076,6 +1076,7 @@ html.rm .xpc polyline{stroke-dasharray:none;stroke-dashoffset:0}
 .at3m button.on{color:#2B1C00;background:linear-gradient(180deg,#FFE08F,#F2C14E 55%,#DDA43A)}
 .at3w{position:relative;height:min(58vh,440px);border-radius:22px;overflow:hidden;background:radial-gradient(70% 60% at 50% 42%,rgba(123,92,255,.28),rgba(19,15,37,0) 70%),radial-gradient(120% 90% at 50% 100%,rgba(242,193,78,.08),transparent 60%),#100C24;box-shadow:inset 0 0 0 1px var(--edge)}
 .at3wq{height:min(46vh,360px);margin:0 0 12px}
+.at3tag{position:absolute;transform:translate(-50%,-100%);padding:6px 11px;border-radius:99px;font-size:13px;font-weight:700;white-space:nowrap;color:#fff;background:rgba(16,12,36,.88);box-shadow:inset 0 0 0 1.5px var(--c),0 8px 20px -8px rgba(0,0,0,.7);pointer-events:none;transition:opacity .4s;animation:at3in .25s ease-out}.at3tag.out{opacity:0}@keyframes at3in{from{opacity:0;transform:translate(-50%,-80%)}}
 .at3c{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
 .at3l{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--mut);font-size:14px}
 .at3l span{width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 3px rgba(242,193,78,.25);border-top:3px solid #F2C14E;animation:at3sp 1s linear infinite}
@@ -1099,6 +1100,53 @@ html.rm .xpc polyline{stroke-dasharray:none;stroke-dashoffset:0}
 .pdh b.c{background:#3DD97A;box-shadow:0 0 8px rgba(61,217,122,.55)}.pdh b.t{background:#FF5468;box-shadow:0 0 8px rgba(255,84,104,.55)}
 .pdm b{color:#8BF2B5}
 .pdt2{background:var(--panel);font-size:12px}.pdt2 div:first-child b{color:#F2C14E}.pdt2 div>*{padding:8px 4px}
+/* v94 : page Révision et « Réviser mes cartes » */
+.rvhero{position:relative;display:flex;align-items:center;gap:14px;width:100%;margin:0 0 12px;padding:16px;border-radius:22px;text-align:left;overflow:hidden;background:radial-gradient(120% 120% at 0 0,rgba(242,193,78,.2),transparent 55%),radial-gradient(90% 90% at 100% 100%,rgba(123,92,255,.28),transparent 60%),#1A1535;box-shadow:inset 0 0 0 1.5px rgba(242,193,78,.55),0 18px 34px -22px rgba(242,193,78,.6)}
+.rvhero:active{transform:scale(.985)}
+.rvhi{flex:none;width:52px;height:52px;border-radius:16px;display:grid;place-items:center;color:#2B1C00;background:linear-gradient(180deg,#FFE08F,#F2C14E 55%,#DDA43A);box-shadow:0 10px 22px -10px rgba(242,193,78,.9)}
+.rvhi svg.i{width:26px;height:26px}
+.rvht{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.rvht small{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#F2C14E}
+.rvht>b{font-family:Fraunces,serif;font-size:22px;line-height:1.1}
+.rvht>span{font-size:12.5px;color:var(--mut);line-height:1.35}
+.rvhb{display:block;height:5px;margin:6px 0 0;border-radius:9px;background:rgba(255,255,255,.08);overflow:hidden}.rvhb em{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#F2C14E,#FFE08F)}
+.rvht .rvhp{font-size:11.5px}.rvhp b{color:var(--ink)}
+.rvhc{flex:none;color:#F2C14E}.rvhc svg.i{width:20px;height:20px}
+.rvg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 14px}
+.rvt{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:118px;padding:14px;border-radius:20px;text-align:left;overflow:hidden;background:radial-gradient(110% 90% at 100% 0,color-mix(in srgb,var(--c) 22%,transparent),transparent 62%),var(--panel);box-shadow:inset 0 0 0 1px var(--edge)}
+.rvt:active{transform:scale(.97)}
+.rvti{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;margin:0 0 8px;color:#F2C14E;background:#0F0C22;box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 75%,transparent),0 8px 18px -10px var(--c)}
+.rvti svg.i{width:20px;height:20px}
+.rvt b{font-size:15px;line-height:1.2;margin-top:0}
+@media (max-width:360px){.rvht>b{font-size:19px}.rvhi{width:44px;height:44px}.rvt{min-height:108px;padding:12px}}.rvt small{font-size:12px;color:var(--mut);line-height:1.3}
+@media (min-width:700px){.rvg{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.rvsrch{position:relative;margin:0 0 10px}.rvsrch svg.i{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--mut);pointer-events:none}.rvsrch .inp{padding-left:42px!important;margin:0!important;font-size:15px!important;height:48px}
+.rvmode{display:grid!important;grid-template-columns:1fr 1fr;margin:12px 0 8px!important}.rvmode .sxb{display:inline-flex;align-items:center;justify-content:center;gap:6px}.rvmode svg.i{width:15px;height:15px}
+.rvall{display:flex;align-items:center;gap:14px;width:100%;padding:14px;margin:0 0 6px;border-radius:20px;text-align:left;background:radial-gradient(110% 120% at 0 0,rgba(242,193,78,.16),transparent 60%),var(--panel);box-shadow:inset 0 0 0 1.5px rgba(242,193,78,.5)}
+.rvall:active{transform:scale(.985)}
+.rvring{flex:none;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#F2C14E var(--p),rgba(255,255,255,.08) 0);-webkit-mask:radial-gradient(circle,transparent 60%,#000 61%);mask:radial-gradient(circle,transparent 60%,#000 61%);position:relative}
+.rvring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:1px;font-size:15px;font-weight:800}
+.rvall .rvring{-webkit-mask:none;mask:none;background:radial-gradient(circle,#1A1535 60%,transparent 61%),conic-gradient(#F2C14E var(--p),rgba(255,255,255,.1) 0)}
+.rvring small{font-size:10px}
+.rvat{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}.rvat b{font-size:16px}.rvat small{font-size:12.5px;color:var(--mut)}.rvat em,.rvct em{font-style:normal;color:#F2C14E;font-weight:700}
+.rvgo{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#2B1C00;background:linear-gradient(180deg,#FFE08F,#F2C14E 55%,#DDA43A)}.rvgo svg.i{width:18px;height:18px}
+.rvys{display:flex;align-items:center;gap:8px;width:100%;margin:0 0 12px;padding:8px 12px;border-radius:12px;font-size:13px;color:var(--mut);background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--edge)}.rvys svg.i{width:16px;height:16px;color:#F2C14E}.rvys span{flex:1;text-align:left}.rvys b{color:var(--ink)}.rvys em{font-style:normal;font-weight:700;color:#F2C14E}
+.rvl{margin:18px 2px 10px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.rvc{margin:0 0 10px;border-radius:20px;background:var(--panel);box-shadow:inset 0 0 0 1px var(--edge);overflow:hidden;transition:box-shadow .2s}
+.rvc.op{box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 70%,transparent),0 16px 30px -24px var(--c)}
+.rvch{display:flex;align-items:center;gap:12px;width:100%;padding:13px 14px;text-align:left}
+.rvci{flex:none;width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:20px;color:#F2C14E;background:#0F0C22;box-shadow:inset 0 0 0 1.5px var(--c),0 8px 18px -10px var(--c)}
+.rvct{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}.rvct b{font-size:15.5px}.rvct small{font-size:12px;color:var(--mut)}
+.rvcb,.rvtb{display:block;height:4px;border-radius:9px;background:rgba(255,255,255,.08);overflow:hidden}.rvcb{margin-top:4px}.rvcb em,.rvtb em{display:block;height:100%;border-radius:9px;background:var(--c)}
+.rvcp{flex:none;font-size:16px;font-weight:800}.rvcp small{font-size:11px;color:var(--mut)}
+.rvcv{flex:none;color:var(--mut);transition:transform .2s}.rvc.op .rvcv{transform:rotate(90deg);color:var(--c)}
+.rvcbody{display:none;padding:0 12px 12px}.rvc.op .rvcbody{display:block}
+.rvcall{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:46px;margin:0 0 10px;border-radius:14px;font-weight:800;font-size:14.5px;color:#14102A;background:linear-gradient(180deg,color-mix(in srgb,var(--c) 85%,#fff),var(--c))}
+.rvcall svg.i{width:16px;height:16px}.rvcall small{font-size:12px;opacity:.75;font-weight:700}
+.rvth{display:grid;gap:6px}
+.rvtr{display:grid;grid-template-columns:minmax(0,1fr) 54px auto 16px;align-items:center;gap:10px;width:100%;padding:11px 12px;border-radius:13px;text-align:left;background:rgba(255,255,255,.035);box-shadow:inset 0 0 0 1px var(--edge)}
+.rvtr:active{background:rgba(255,255,255,.08)}
+.rvtn{font-size:14px;font-weight:600;line-height:1.25}.rvtc{font-size:12px;color:var(--mut);font-weight:700}.rvtr svg.i{width:15px;height:15px;color:var(--mut)}
 button:focus-visible{outline:3px solid #FFC93C;outline-offset:2px}
 </style>
 <script data-goatcounter="https://psynapse.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
@@ -2902,7 +2950,7 @@ pa:{m:0,n:"Lobe pariétal",c:"#3DD97A",r:"Sensations du corps, perception de l'e
 te:{m:0,n:"Lobe temporal",c:"#FF8A3D",r:"Audition, compréhension du langage (aire de Wernicke), mémoire (hippocampe, sur sa face interne) et reconnaissance des objets et des visages.",l:"Aphasie de Wernicke, troubles de la mémoire, prosopagnosie."},
 oc:{m:0,n:"Lobe occipital",c:"#FF63B0",r:"Traitement de l'information visuelle : formes, couleurs, mouvement.",l:"Cécité corticale, hémianopsie, agnosies visuelles."},
 ce:{m:-1,n:"Cervelet",c:"#25E0D0",r:"Coordination des mouvements, équilibre, précision du geste et apprentissage moteur.",l:"Ataxie : démarche instable, gestes imprécis, tremblement quand la main approche du but."},
-tc:{m:-1,n:"Tronc cérébral",c:"#C77BFF",r:"Relie le cerveau à la moelle épinière et contrôle les fonctions vitales : respiration, rythme cardiaque, éveil.",l:"Atteintes vitales, coma, locked-in syndrome."},
+tc:{m:-1,n:"Tronc cérébral",c:"#A898D8",r:"Relie le cerveau à la moelle épinière et contrôle les fonctions vitales : respiration, rythme cardiaque, éveil.",l:"Atteintes vitales, coma, locked-in syndrome."},
 pf:{m:1,n:"Cortex préfrontal",c:"#7E86FF",r:"Fonctions exécutives : planifier, inhiber, garder une information en tête, décider et réguler ses émotions.",l:"Syndrome dysexécutif, impulsivité ou apathie, comme chez Phineas Gage."},
 mo:{m:1,n:"Cortex moteur primaire",c:"#FF5468",r:"Commande les mouvements volontaires du côté opposé du corps. Il est organisé en homoncule moteur (Penfield).",l:"Paralysie ou faiblesse du côté opposé du corps (hémiplégie)."},
 so:{m:1,n:"Cortex somatosensoriel primaire",c:"#3DD97A",r:"Reçoit le toucher, la douleur, la température et la position du corps, selon un homoncule sensitif.",l:"Perte de sensibilité du côté opposé du corps."},
@@ -2911,12 +2959,12 @@ we:{m:1,n:"Aire de Wernicke",c:"#FF8A3D",r:"Compréhension du langage, à l'oral
 au:{m:1,n:"Cortex auditif primaire",c:"#4FA8FF",r:"Premier traitement cortical des sons : hauteur et intensité (gyrus de Heschl).",l:"Surdité corticale si les deux côtés sont atteints, agnosie auditive."},
 vi:{m:1,n:"Cortex visuel primaire (V1)",c:"#FF63B0",r:"Première étape corticale de la vision ; chaque point du champ visuel y a sa place (rétinotopie).",l:"Perte d'une partie du champ visuel ; parfois « vision aveugle » (blindsight)."},
 as:{m:1,n:"Cortex associatif",c:"#9C95C9",r:"Zones qui combinent les informations des différents sens pour former des représentations complexes.",l:"Troubles variés selon la zone : agnosies, apraxies, négligence."},
-cc:{m:2,n:"Corps calleux",c:"#F4F2FF",r:"Grand faisceau de fibres qui relie les deux hémisphères et leur permet d'échanger les informations.",l:"Syndrome de déconnexion, étudié chez les patients au cerveau divisé (Sperry, Gazzaniga)."},
+cc:{m:2,n:"Corps calleux",c:"#E6DBFF",r:"Grand faisceau de fibres qui relie les deux hémisphères et leur permet d'échanger les informations.",l:"Syndrome de déconnexion, étudié chez les patients au cerveau divisé (Sperry, Gazzaniga)."},
 th:{m:2,n:"Thalamus",c:"#4FA8FF",r:"Relais des informations sensorielles (sauf l'odorat) vers le cortex ; il participe aussi à l'attention et à la vigilance.",l:"Troubles de la sensibilité, douleurs, troubles de la vigilance ou de la mémoire."},
 hy:{m:2,n:"Hypothalamus",c:"#B5E04A",r:"Régule la faim, la soif, la température, le sommeil et les hormones, via l'hypophyse.",l:"Troubles de l'appétit, de la température, du sommeil et des hormones."},
 hi:{m:2,n:"Hippocampe",c:"#F2C14E",r:"Formation des nouveaux souvenirs (mémoire épisodique) et orientation dans l'espace (cellules de lieu).",l:"Amnésie antérograde, comme chez le patient H.M. ; il est touché tôt dans la maladie d'Alzheimer."},
 am:{m:2,n:"Amygdale",c:"#FF5468",r:"Détecte les menaces, déclenche la peur et renforce la mémoire des événements émotionnels.",l:"Moins de peur, difficulté à reconnaître la peur sur les visages."},
-st:{m:2,n:"Noyaux gris centraux",c:"#C77BFF",r:"Sélection et déclenchement des mouvements, apprentissage des habitudes, circuit de la récompense (striatum).",l:"Maladie de Parkinson (voie nigro-striée), maladie de Huntington."}};
+st:{m:2,n:"Noyaux gris centraux",c:"#FF8A3D",r:"Sélection et déclenchement des mouvements, apprentissage des habitudes, circuit de la récompense (striatum).",l:"Maladie de Parkinson (voie nigro-striée), maladie de Huntington."}};
 var ATMODES=[["Lobes",0],["Aires",1],["Intérieur",2]];
 function at3Perlin(){var p=[],i;for(i=0;i<256;i++)p[i]=i;var s=7;for(i=255;i>0;i--){s=(s*16807)%2147483647;var j=s%(i+1),t=p[i];p[i]=p[j];p[j]=t}for(i=0;i<256;i++)p[256+i]=p[i];
   function f(t){return t*t*t*(t*(t*6-15)+10)}function l(t,a,b){return a+t*(b-a)}function g(h,x,y,z){h&=15;var u=h<8?x:y,v=h<4?y:h==12||h==14?x:z;return((h&1)?-u:u)+((h&2)?-v:v)}
@@ -2924,7 +2972,8 @@ function at3Perlin(){var p=[],i;for(i=0;i<256;i++)p[i]=i;var s=7;for(i=255;i>0;i
     return l(w,l(v,l(u,g(p[AA],x,y,z),g(p[BA],x-1,y,z)),l(u,g(p[AB],x,y-1,z),g(p[BB],x-1,y-1,z))),l(v,l(u,g(p[AA+1],x,y,z-1),g(p[BA+1],x-1,y,z-1)),l(u,g(p[AB+1],x,y-1,z-1),g(p[BB+1],x-1,y-1,z-1))))}}
 function at3Ys(z){return -0.06-0.2*z}
 function at3Cs(y){return 0.2-0.3*(y+0.1)/0.8}
-function at3Hemi(T,side,N){var G=new T.SphereGeometry(1,200,150),P=G.attributes.position,n=P.count,L=new Array(n),Ar=new Array(n),ao=new Float32Array(n),i,v=new T.Vector3();
+function at3Sm(a,b,x){var t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t)}
+function at3Hemi(T,side,N){var G=new T.SphereGeometry(1,200,150),P=G.attributes.position,n=P.count,L=new Array(n),Ar=new Array(n),ao=new Float32Array(n),W=new Float32Array(n*4),i,v=new T.Vector3();
   for(i=0;i<n;i++){v.fromBufferAttribute(P,i);var u=v.x,y=v.y,z=v.z,X=0.56,Y=0.64,Z=1.04,px=u*X*(1-0.12*Math.max(0,z)*Math.max(0,z)),py=y*Y*(1-0.1*Math.max(0,-z-0.3)),pz=z*Z;
     if(u<0)px*=0.28;
     var tw=Math.exp(-((pz-0.12)*(pz-0.12))/0.16-((y+0.6)*(y+0.6))/0.09)*Math.max(0,u);py-=0.2*tw;px+=0.06*tw;
@@ -2933,10 +2982,12 @@ function at3Hemi(T,side,N){var G=new T.SphereGeometry(1,200,150),P=G.attributes.
     if(pz<-0.7)py+=0.04*(pz+0.7);
     var lat=Math.max(0,u),sg=0;if(pz>-0.5&&pz<0.62&&lat>0.25){var d=py-at3Ys(pz);sg=Math.exp(-d*d/0.0016)*lat}
     var wx=N(px*2.1+9,py*2.1,pz*2.1)*0.55,wy=N(px*2.1,py*2.1+9,pz*2.1)*0.55,q=N(px*6.4+wx,py*6.4+wy,pz*6.4),q2=N(px*13+3+wy,py*13,pz*13+wx),rid=1-Math.abs(q),rid2=1-Math.abs(q2);rid=rid*rid;
-    var disp=0.052*(rid-0.55)+0.012*(rid2-0.5)-0.07*sg;
+    var cg=0;if(lat>0.15&&py>at3Ys(pz)+0.02){var dc=pz-at3Cs(py);cg=Math.exp(-dc*dc/0.0009)*Math.min(1,lat*1.6)}
+    var disp=0.052*(rid-0.55)+0.012*(rid2-0.5)-0.07*sg-0.034*cg;
     if(u<-0.6)disp*=0.35;
     var len=Math.sqrt(px*px+py*py+pz*pz)||1;px+=px/len*disp;py+=py/len*disp;pz+=pz/len*disp;
-    ao[i]=Math.max(0,Math.min(1,0.15+1.05*rid-1.8*sg));
+    ao[i]=Math.max(0,Math.min(1,0.15+1.05*rid-1.8*sg-1.1*cg));
+    var wo=at3Sm(-0.57,-0.67,pz),wt=(1-wo)*at3Sm(0.035,-0.035,py-at3Ys(pz))*at3Sm(0.67,0.57,pz)*at3Sm(-0.26,-0.14,u),wr=Math.max(0,1-wo-wt),wf=wr*at3Sm(-0.035,0.035,pz-at3Cs(py));W[i*4]=wf;W[i*4+1]=wr-wf;W[i*4+2]=wt;W[i*4+3]=wo;
     var lb=pz<-0.62?"oc":(py<at3Ys(pz)&&pz>-0.62&&pz<0.62&&u>-0.2)?"te":(pz>at3Cs(py)?"fr":"pa");L[i]=lb;
     var a="as",cs=at3Cs(py);
     if(lb=="fr"&&pz>0.58)a="pf";
@@ -2948,28 +2999,31 @@ function at3Hemi(T,side,N){var G=new T.SphereGeometry(1,200,150),P=G.attributes.
     Ar[i]=a;P.setXYZ(i,side*(px+0.235),py,pz)}
   if(side<0){var ix=G.index.array;for(i=0;i<ix.length;i+=3){var t=ix[i+1];ix[i+1]=ix[i+2];ix[i+2]=t}}
   G.computeVertexNormals();G.setAttribute("color",new T.BufferAttribute(new Float32Array(n*3),3));
-  var m=new T.Mesh(G,new T.MeshStandardMaterial({vertexColors:true,roughness:0.62,metalness:0.02,transparent:true,opacity:1}));m.userData={kind:"cx",L:L,A:Ar,ao:ao};return m}
+  var m=new T.Mesh(G,new T.MeshPhysicalMaterial({vertexColors:true,roughness:0.5,metalness:0,clearcoat:0.3,clearcoatRoughness:0.5,sheen:0.7,sheenRoughness:0.45,sheenColor:new T.Color("#FFD6EA"),transparent:true,opacity:1}));m.userData={kind:"cx",L:L,A:Ar,ao:ao,W:W};return m}
 function at3Blob(T,id,geo,N,amp,fol){var P=geo.attributes.position,v=new T.Vector3(),i;for(i=0;i<P.count;i++){v.fromBufferAttribute(P,i);var k=fol?(0.5+0.5*Math.sin(v.y*58+N(v.x*4,v.y*4,v.z*4)*3)):(1-Math.abs(N(v.x*6,v.y*6,v.z*6)));var len=v.length()||1;v.multiplyScalar(1+amp*(k-0.5)/len);P.setXYZ(i,v.x,v.y,v.z)}geo.computeVertexNormals();
   var m=new T.Mesh(geo,new T.MeshStandardMaterial({color:ATZ[id].c,roughness:0.55,metalness:0.02,emissive:"#000000"}));m.userData={kind:"pt",id:id};return m}
 function at3Build(T){var N=at3Perlin(),g=new T.Group(),parts=[];
   var hr=at3Hemi(T,1,N),hl=at3Hemi(T,-1,N);g.add(hr);g.add(hl);
   var ce=new T.SphereGeometry(1,96,64);ce.scale(0.5,0.27,0.3);ce.translate(0,-0.47,-0.62);var cm=at3Blob(T,"ce",ce,N,0.035,1);g.add(cm);
   var path=new T.CatmullRomCurve3([new T.Vector3(0,-0.2,-0.14),new T.Vector3(0,-0.4,-0.2),new T.Vector3(0,-0.66,-0.26),new T.Vector3(0,-0.9,-0.3)]);
-  var tg=new T.TubeGeometry(path,40,0.12,24,false);var tm=at3Blob(T,"tc",tg,N,0.01,0);g.add(tm);
+  var pr=[[0.001,-1.02],[0.06,-1.0],[0.07,-0.86],[0.08,-0.7],[0.13,-0.58],[0.15,-0.48],[0.13,-0.38],[0.105,-0.28],[0.095,-0.18],[0.001,-0.14]].map(function(p){return new T.Vector2(p[0],p[1])});var tg=new T.LatheGeometry(pr,40);tg.rotateX(-0.22);tg.translate(0,0.02,-0.2);var tm=at3Blob(T,"tc",tg,N,0.008,0);g.add(tm);
   function add(id,geo){var m=at3Blob(T,id,geo,N,0.01,0);m.visible=false;g.add(m);parts.push(m);return m}
-  var ccp=new T.CatmullRomCurve3([new T.Vector3(0,0.02,0.42),new T.Vector3(0,0.2,0.3),new T.Vector3(0,0.26,0),new T.Vector3(0,0.22,-0.3),new T.Vector3(0,0.06,-0.42)]);add("cc",new T.TubeGeometry(ccp,48,0.045,14,false)).scale.set(2.6,1,1);
+  var ccp=new T.CatmullRomCurve3([new T.Vector3(0,0.02,0.42),new T.Vector3(0,0.2,0.3),new T.Vector3(0,0.26,0),new T.Vector3(0,0.22,-0.3),new T.Vector3(0,0.06,-0.42)]);add("cc",new T.TubeGeometry(ccp,48,0.04,14,false)).scale.set(2.2,1,1);
   [-1,1].forEach(function(s){var a=new T.SphereGeometry(1,32,24);a.scale(0.085,0.075,0.13);a.translate(s*0.085,0.02,-0.06);add("th",a);
     var h=new T.CatmullRomCurve3([new T.Vector3(s*0.3,-0.3,0.18),new T.Vector3(s*0.32,-0.28,0.0),new T.Vector3(s*0.28,-0.2,-0.2),new T.Vector3(s*0.2,-0.08,-0.32)]);add("hi",new T.TubeGeometry(h,32,0.036,12,false));
     var am=new T.SphereGeometry(0.06,24,18);am.translate(s*0.3,-0.3,0.25);add("am",am);
     var st=new T.SphereGeometry(1,32,24);st.scale(0.07,0.12,0.2);st.translate(s*0.2,0.07,0.14);add("st",st)});
   var hy=new T.SphereGeometry(0.06,24,18);hy.translate(0,-0.12,0.1);add("hy",hy);
   return {g:g,hr:hr,hl:hl,cm:cm,tm:tm,parts:parts}}
-function at3Paint(){var A=AT3;if(!A)return;var T=A.T,col=new T.Color(),gold=new T.Color("#F2C14E"),base=new T.Color("#B4A8E8"),C={};
+function at3Paint(){var A=AT3;if(!A)return;var T=A.T,col=new T.Color(),gold=new T.Color("#F2C14E"),base=new T.Color("#C9B8EC"),C={};
   for(var k in ATZ)C[k]=new T.Color(ATZ[k].c);
   [A.b.hr,A.b.hl].forEach(function(h){var u=h.userData,cl=h.geometry.attributes.color,n=cl.count,R=AT3M==1?u.A:u.L;
-    for(var i=0;i<n;i++){var id=R[i],st=A.st[id];if(AT3M==2)col.copy(base);else if(AT3M==1&&id=="as")col.copy(base);else col.copy(base).lerp(C[id],0.62);
-      if(st=="good")col.set("#3DD97A");else if(st=="bad")col.set("#FF5468");else if(st=="sel"||A.sel==id&&AT3M!=2)col.copy(gold);
-      var s=0.42+0.58*u.ao[i];cl.setXYZ(i,col.r*s,col.g*s,col.b*s)}
+    var LB=["fr","pa","te","oc"],tmp=new T.Color(),ST={good:new T.Color("#3DD97A"),bad:new T.Color("#FF5468"),sel:gold};
+    for(var i=0;i<n;i++){var id=R[i],st=A.st[id];
+      if(AT3M==0){col.setRGB(0,0,0);var hi=null,hw=0;for(var j=0;j<4;j++){var w=u.W[i*4+j];if(!w)continue;tmp.copy(base).lerp(C[LB[j]],0.6);var s2=A.st[LB[j]]||(A.sel==LB[j]?"sel":null);if(s2)tmp.lerp(ST[s2],0.92);col.r+=tmp.r*w;col.g+=tmp.g*w;col.b+=tmp.b*w}}
+      else{if(AT3M==2)col.copy(base);else if(AT3M==1&&id=="as")col.copy(base);else col.copy(base).lerp(C[id],0.62);
+      if(st=="good")col.set("#3DD97A");else if(st=="bad")col.set("#FF5468");else if(st=="sel"||A.sel==id&&AT3M!=2)col.copy(gold)}
+      var s=0.38+0.62*u.ao[i];cl.setXYZ(i,col.r*s,col.g*s,col.b*s)}
     cl.needsUpdate=true;h.material.opacity=AT3M==2?0.13:1;h.material.depthWrite=AT3M!=2});
   [A.b.cm,A.b.tm].concat(A.b.parts).forEach(function(m){var id=m.userData.id,st=A.st[id];if(m.userData.kind=="pt"&&ATZ[id].m==2)m.visible=AT3M==2;
     m.material.color.set(st=="good"?"#3DD97A":st=="bad"?"#FF5468":(A.sel==id||st=="sel")?"#F2C14E":ATZ[id].c);m.material.emissive.set(A.sel==id||st?"#3a2a00":"#000000")});
@@ -2982,19 +3036,20 @@ function at3Pick(cx,cy){var A=AT3,r=A.cv.getBoundingClientRect(),T=A.T,m=new T.V
 function at3Mount(el,onPick){if(AT3T)clearTimeout(AT3T);var go=function(T){var A={T:T,el:el,rx:0.12,ry:-1.25,zm:AT3M==2?3.5:4.5,st:{},sel:null,raf:0,onPick:onPick};
     var cv=document.createElement("canvas");cv.className="at3c";el.innerHTML="";el.appendChild(cv);A.cv=cv;
     try{A.ren=new T.WebGLRenderer({canvas:cv,antialias:true,alpha:true});}catch(e){el.innerHTML='<p class="at3e">La 3D n’est pas disponible sur cet appareil.</p>';return}
-    A.ren.setPixelRatio(Math.min(2,window.devicePixelRatio||1));A.sc=new T.Scene();A.cam=new T.PerspectiveCamera(34,1,0.1,50);
+    A.ren.setPixelRatio(Math.min(2,window.devicePixelRatio||1));A.ren.toneMapping=T.ACESFilmicToneMapping;A.ren.toneMappingExposure=1.18;A.sc=new T.Scene();var sh=document.createElement("canvas");sh.width=sh.height=128;var sx=sh.getContext("2d"),gr=sx.createRadialGradient(64,64,4,64,64,62);gr.addColorStop(0,"rgba(0,0,0,.55)");gr.addColorStop(1,"rgba(0,0,0,0)");sx.fillStyle=gr;sx.fillRect(0,0,128,128);var sp=new T.Mesh(new T.PlaneGeometry(2.8,2.2),new T.MeshBasicMaterial({map:new T.CanvasTexture(sh),transparent:true,depthWrite:false}));sp.rotation.x=-Math.PI/2;sp.position.y=-1.08;A.sc.add(sp);A.cam=new T.PerspectiveCamera(34,1,0.1,50);
     A.sc.add(new T.HemisphereLight("#F4F2FF","#2A1F5C",1.05));var d=new T.DirectionalLight("#FFFFFF",1.5);d.position.set(2.5,3,4);A.sc.add(d);var r2=new T.DirectionalLight("#9C7BFF",1.1);r2.position.set(-3,-1,-3);A.sc.add(r2);var r3=new T.DirectionalLight("#F2C14E",0.35);r3.position.set(-2,2,2);A.sc.add(r3);
     A.b=at3Build(T);A.sc.add(A.b.g);A.rc=new T.Raycaster();AT3=A;at3Size();at3Paint();at3Ctl();
-    var t0=performance.now(),spin=function(t){if(AT3!==A||A.touched)return;var k=Math.min(1,(t-t0)/2600);A.ry=-1.25+Math.sin(k*Math.PI)*0.5;at3Draw();if(k<1)requestAnimationFrame(spin)};if(!(M&&M.rm))requestAnimationFrame(spin)};
+    A.lt=performance.now();var lp=0,spin=function(t){if(AT3!==A||!document.body.contains(A.cv))return;if(lp&&t-A.lt>5000&&!A.hold){A.ry+=Math.min(50,t-lp)*0.00018;at3Draw()}lp=t;requestAnimationFrame(spin)};if(!(M&&M.rm))requestAnimationFrame(spin)};
   if(window.THREE3)return go(window.THREE3);el.innerHTML='<div class="at3l"><span></span>Chargement du cerveau…</div>';
   import("./three.module.min.js").then(function(T){window.THREE3=T;if(document.body.contains(el))go(T)}).catch(function(){el.innerHTML='<p class="at3e">Impossible de charger la 3D. Vérifie ta connexion, puis réessaie.</p>'})}
 function at3Ctl(){var A=AT3,cv=A.cv,P={},d0=0,z0=0,mv=0,sx=0,sy=0;
-  cv.addEventListener("pointerdown",function(e){cv.setPointerCapture(e.pointerId);P[e.pointerId]=[e.clientX,e.clientY];A.touched=1;var k=Object.keys(P);if(k.length==1){mv=0;sx=e.clientX;sy=e.clientY}if(k.length==2){var a=P[k[0]],b=P[k[1]];d0=Math.hypot(a[0]-b[0],a[1]-b[1]);z0=A.zm;mv=99}});
+  cv.addEventListener("pointerdown",function(e){cv.setPointerCapture(e.pointerId);P[e.pointerId]=[e.clientX,e.clientY];A.touched=1;A.hold=1;A.lt=performance.now();var k=Object.keys(P);if(k.length==1){mv=0;sx=e.clientX;sy=e.clientY}if(k.length==2){var a=P[k[0]],b=P[k[1]];d0=Math.hypot(a[0]-b[0],a[1]-b[1]);z0=A.zm;mv=99}});
   cv.addEventListener("pointermove",function(e){var p=P[e.pointerId];if(!p)return;var k=Object.keys(P);if(k.length==1){var dx=e.clientX-p[0],dy=e.clientY-p[1];A.ry+=dx*0.011;A.rx=Math.max(-1.3,Math.min(1.3,A.rx+dy*0.011));mv+=Math.abs(dx)+Math.abs(dy)}else if(k.length==2){P[e.pointerId]=[e.clientX,e.clientY];var a=P[k[0]],b=P[k[1]],dd=Math.hypot(a[0]-b[0],a[1]-b[1]);if(d0)A.zm=Math.max(2.4,Math.min(7,z0*d0/dd))}P[e.pointerId]=[e.clientX,e.clientY];at3Draw()});
-  var up=function(e){if(!P[e.pointerId])return;var one=Object.keys(P).length==1;delete P[e.pointerId];if(one&&mv<8){var id=at3Pick(e.clientX,e.clientY);if(id&&A.onPick)A.onPick(id)}};
+  var up=function(e){if(!P[e.pointerId])return;var one=Object.keys(P).length==1;delete P[e.pointerId];A.hold=Object.keys(P).length>0;A.lt=performance.now();if(one&&mv<8){var id=at3Pick(e.clientX,e.clientY);if(id){at3Tag(id,e.clientX,e.clientY);if(A.onPick)A.onPick(id)}}};
   cv.addEventListener("pointerup",up);cv.addEventListener("pointercancel",function(e){delete P[e.pointerId]});
   cv.addEventListener("wheel",function(e){e.preventDefault();A.zm=Math.max(2.4,Math.min(7,A.zm*(1+e.deltaY*0.0012)));at3Draw()},{passive:false});
   if(!window.AT3RS){window.AT3RS=1;window.addEventListener("resize",function(){at3Size()})}}
+function at3Tag(id,x,y){var A=AT3;if(!A||!A.el)return;var o=A.el.querySelector(".at3tag");if(o)o.remove();var r=A.el.getBoundingClientRect(),t=document.createElement("div");t.className="at3tag";t.style.setProperty("--c",ATZ[id].c);t.textContent=ATZ[id].n;t.style.left=Math.max(70,Math.min(r.width-70,x-r.left))+"px";t.style.top=Math.max(30,y-r.top-22)+"px";A.el.appendChild(t);setTimeout(function(){t.classList.add("out")},1800);setTimeout(function(){t.remove()},2300)}
 function at3Mode(m){AT3M=m;if(AT3){AT3.sel=null;AT3.st={};AT3.zm=m==2?3.5:4.5}document.querySelectorAll(".at3m button").forEach(function(b,i){b.classList.toggle("on",i==m)});var x=document.getElementById("at3i");if(x)x.innerHTML=at3Hint();at3Paint()}
 function at3Hint(){return '<p class="at3h">'+ic("srch")+' Fais tourner le cerveau avec ton doigt, pince pour zoomer, et touche une zone pour découvrir son rôle.</p>'}
 function at3Info(id){var z=ATZ[id];return '<div class="at3card" style="--c:'+z.c+'"><div class="at3ch"><i></i><b>'+esc(z.n)+'</b></div><p><em>Son rôle</em>'+esc(z.r)+'</p><p><em>Si elle est lésée</em>'+esc(z.l)+'</p></div>'}
@@ -3013,6 +3068,34 @@ function atF(j){var Z=AT3Q;if(!Z||Z.lock)return;Z.lock=1;var q=Z.q[Z.i],ok=Z.o[j
 function atNx(ok,id,bad){var Z=AT3Q;document.getElementById("cfn").innerHTML='<p class="cffb '+(ok?'y':'n')+'">'+(ok?'Bien vu !':'Faux !'+(bad?' Tu as touché : '+esc(ATZ[bad].n)+'.':''))+'</p>'+at3Info(id)+'<button class="cta" style="width:100%;margin-top:12px" onclick="atN()">'+(Z.i+1<Z.q.length?'Question suivante':'Voir mon score')+'</button>';setTimeout(function(){var e=document.getElementById("cfn");if(e&&e.scrollIntoView)e.scrollIntoView({behavior:"smooth",block:"nearest"})},150)}
 function atN(){var Z=AT3Q;Z.i++;if(Z.i<Z.q.length)return atQ();var g=Z.g;if(g>(M.atl||0))M.atl=g;save();if(g)xpAdd(g*2,true);if(g==Z.q.length){try{burst()}catch(e){}}AT3=null;
   A.innerHTML=cfTop("Atlas du cerveau")+'<div class="scr"><div class="box cfres"><small>Ton score</small><b>'+g+' / '+Z.q.length+'</b><p>'+(g==10?'Parfait, tu connais ton cerveau par cœur !':g>=7?'Très bien ! Encore un petit effort.':'Explore encore l’atlas, puis retente ta chance.')+'</p></div><button class="cta" style="width:100%;margin-bottom:10px" onclick="atGo()">Rejouer</button><button class="cta alt" style="width:100%" onclick="atList()">Explorer l’atlas</button></div>';AT3Q=null;scrollTo(0,0)}
+/* v94 : page Révision recentrée sur 7 entrées, et page « Réviser mes cartes » repensée */
+var RVO={};
+function rvStat(f){var t=0,m=0,d=0,n=0;D.forEach(function(x,i){if(i<BASE&&on(i)&&f(x)){t++;var s=st(i);if(s=="mas")m++;if(s=="new")n++;if(due(i))d++}});return {t:t,m:m,d:d,n:n,p:t?Math.round(m/t*100):0}}
+function playHTML(){
+  var dn=ids(function(d,s,i){return due(i)}).length,nc=Object.keys(M.cc||{}).length,ne=errIds().length+errPids().length,ex="",S=rvStat(function(){return true});
+  if(M.ex){var nd=Math.round((Date.parse(M.ex)-Date.parse(day()))/864e5);if(nd>=0){ex='<div class="tdx">'+ic("cal")+' '+(nd>1?'Prochain partiel dans <b>'+nd+' jours</b>':nd==1?'Prochain partiel <b>demain</b>, courage !':'Partiel <b>aujourd\'hui</b>, bon courage !')+'</div>'}}
+  var dj=(M.h&&M.h[day()])||0,dp=Math.min(100,Math.round(dj/20*100)),h='<div class="scr">';
+  h+='<div class="today td2"><div class="tdr" style="--p:'+dp+'%"><b>'+dj+'</b><small>/20</small></div><div class="tdl"><small>Aujourd\'hui</small><div class="tdn"><b>'+dn+'</b><span>carte'+(dn>1?'s':'')+' à revoir</span></div></div><button class="cta tdb" onclick="start(\''+(dn?'due':'all')+'\')">'+(dn?'Réviser':'Découvrir')+'</button>'+ex+'</div>';
+  h+='<button class="rvhero" onclick="thm()"><span class="rvhi">'+ic("cards")+'</span><span class="rvht"><small>Le cœur de Psynapse</small><b>Réviser mes cartes</b><span>Tout d’un coup, une catégorie ou un thème · '+S.t+' cartes</span><i class="rvhb"><em style="width:'+S.p+'%"></em></i><span class="rvhp"><b>'+S.p+' %</b> maîtrisé</span></span><span class="rvhc">'+ic("chev")+'</span></button>';
+  var T=[["cfList()","cf","#FF63B0","Confusions","Les notions qu’on mélange"],["vgList()","user","#4FA8FF","Cas cliniques","Poser le bon diagnostic"],["atList()","neu","#3DD97A","Atlas du cerveau","Explorer le cerveau en 3D"],["hist()","tl","#FF8A3D","Histoire","Auteurs et grands jalons"],["ccS()","pen","#C77BFF","Mes cartes",nc?nc+' carte'+(nc>1?'s':'')+' créée'+(nc>1?'s':''):'Crée les tiennes'],["errPg()","target","#FF5468","Mes erreurs",ne?ne+' à retravailler':'Rien à revoir']];
+  h+='<div class="rvg">'+T.map(function(t){return '<button class="rvt" style="--c:'+t[2]+'" onclick="'+t[0]+'"><span class="rvti">'+ic(t[1])+'</span><b>'+t[3]+'</b><small>'+t[4]+'</small></button>'}).join("")+'</div>';
+  return h+bkCard()+'</div>'}
+function thm(){B.className="";SUBS=[];var S=rvStat(function(){return true});
+  var h='<div class="top"><button class="hb" onclick="render()" aria-label="Menu">'+ic("home")+'</button><h1 style="margin:0">Réviser mes cartes</h1></div><div class="scr rvs">';
+  h+='<div class="rvsrch">'+ic("srch")+'<input class="inp dt" placeholder="Chercher : Piaget, mémoire, ANOVA…" oninput="thmS(this.value)" autocomplete="off"></div><div id="sr"></div>';
+  h+='<div class="sx rvmode"><button class="sxb'+(TM?'':' on')+'" onclick="TM=0;thm()">'+ic("play")+' S’entraîner</button><button class="sxb'+(TM?' on':'')+'" onclick="TM=1;thm()">'+ic("doc")+' Lire en fiche</button></div>';
+  var ysL=(M.ys||[]).map(function(y){return YS[y]}).join(' · ');h+='<button class="rvys" onclick="ysOpen()">'+ic("cal")+'<span>Questions de <b>'+ysL+'</b></span><em>Modifier</em></button>';h+='<button class="rvall" onclick="start(\'all\')"><span class="rvring" style="--p:'+S.p+'%"><b>'+S.p+'<small>%</small></b></span><span class="rvat"><b>Toutes les catégories</b><small>'+S.t+' cartes · '+(S.d?'<em>'+S.d+' à revoir</em> · ':'')+S.n+' nouvelles</small></span><span class="rvgo">'+ic("play")+'</span></button>';
+  h+='<p class="rvl">'+(TM?'Choisis un thème à lire en fiche':'Ou choisis une catégorie, puis un thème')+'</p>';
+  CATS.forEach(function(c){var m={},o=[];D.forEach(function(d,i){if(i<BASE&&d[0]==c.id&&on(i)){if(!m[d[1]]){m[d[1]]=[];o.push(d[1])}m[d[1]].push(i)}});if(!o.length)return;
+    var S2=rvStat(function(x){return x[0]==c.id}),op=RVO[c.id];
+    h+='<div class="rvc'+(op?' op':'')+'" style="--c:'+c.c+';--c2:'+c.c2+'"><button class="rvch" onclick="RVO[\''+c.id+'\']=!RVO[\''+c.id+'\'];this.parentNode.classList.toggle(\'op\')"><span class="rvci">'+c.e+'</span><span class="rvct"><b>'+c.n+'</b><small>'+o.length+' thème'+(o.length>1?'s':'')+' · '+S2.t+' cartes'+(S2.d?' · <em>'+S2.d+' à revoir</em>':'')+'</small><i class="rvcb"><em style="width:'+S2.p+'%"></em></i></span><span class="rvcp">'+S2.p+'<small>%</small></span><span class="rvcv">'+ic("chev")+'</span></button><div class="rvcbody">'+(TM?'':'<button class="rvcall" onclick="start(\''+c.id+'\')">'+ic("play")+' Réviser toute la catégorie <small>'+S2.t+'</small></button>')+'<div class="rvth">';
+    o.forEach(function(n){SUBS.push(m[n]);var L=m[n],mm=L.filter(function(i){return st(i)=="mas"}).length,p=Math.round(mm/L.length*100);
+      h+='<button class="rvtr" onclick="subGo('+(SUBS.length-1)+',\''+c.id+'\')"><span class="rvtn">'+esc(n)+'</span><span class="rvtb"><em style="width:'+p+'%"></em></span><span class="rvtc">'+L.length+'</span>'+ic(TM?"doc":"chev")+'</button>'});
+    h+='</div></div></div>'});
+  A.innerHTML=h+'</div>';scrollTo(0,0)}
+function ysRf(){if(document.querySelector(".rvs")){var y=scrollY;thm();scrollTo(0,y)}else render()}
+function ysTg(y){var k=M.ys.indexOf(y);if(k>=0){if(M.ys.length==1)return pop("Garde au moins une année");M.ys.splice(k,1)}else{M.ys.push(y);M.ys.sort()}save();ysRf();ysRef()}
+function ysSet(m){M.ys=m=="me"?[M.yr]:m=="upto"?dys(M.yr):[1,2,3,4,5];save();ysRf();ysRef()}
 function lvTier(k){return k<5?"t1":k<10?"t2":k<15?"t3":k<19?"t4":"t5"}
 function lvShow(){var l=lvl(),p=lvP(),mx=l>=LVM,pc=mx?100:p.pct,TC=["#9B7BFF","#4FB3FF","#2FD9A0","#FFB347","#F2C14E"];
 var h='<h2>Niveaux</h2><div class="lvh2"><span class="lvgl"></span><div class="lvmd" style="--p:'+pc+'%"><span class="lvb '+lvTier(l-1)+'">'+l+'</span></div><small class="lvey">Niveau '+l+' sur '+LVM+'</small><b class="lvnm">'+LVN[l-1]+'</b><div class="lvbar"><i style="width:'+pc+'%"></i></div><p class="lvxp">'+(mx?'Niveau maximum atteint, bravo !':'<b>'+p.cur+'</b> / '+p.need+' XP')+'</p>'+(mx?'':'<span class="lvnx">'+ic("star")+' Encore <b>'+p.left+' XP</b> pour « '+LVN[l]+' »</span>')+'<span class="lvtot">'+(M.xp||0)+' XP au total</span></div>';
@@ -3083,7 +3166,7 @@ function due(i){var r=P[i];return!!r&&(r.d||"")<=day()}
 function rk(i){var s=st(i);return due(i)?(s=="ko"?0:1):s=="new"?2:3}
 var SUBS=[],SR=[],URL0="https://psynapsegame.github.io/Psynapse/";
 function nrm(t){return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
-function thm(){B.className="";SUBS=[];var h='<div class="top"><button class="hb" onclick="render()" aria-label="Menu">'+ic("home")+'</button><h1 style="margin:0">Réviser un thème</h1></div><div class="scr"><div class="sx" style="margin:0 0 12px"><button class="sxb'+(TM?'':' on')+'" onclick="TM=0;thm()">S\'entraîner</button><button class="sxb'+(TM?' on':'')+'" onclick="TM=1;thm()">Lire en fiche</button></div><input class="inp dt" placeholder="Chercher : Piaget, mémoire, ANOVA…" oninput="thmS(this.value)" autocomplete="off"><div id="sr"></div>';
+function thm0(){B.className="";SUBS=[];var h='<div class="top"><button class="hb" onclick="render()" aria-label="Menu">'+ic("home")+'</button><h1 style="margin:0">Réviser un thème</h1></div><div class="scr"><div class="sx" style="margin:0 0 12px"><button class="sxb'+(TM?'':' on')+'" onclick="TM=0;thm()">S\'entraîner</button><button class="sxb'+(TM?' on':'')+'" onclick="TM=1;thm()">Lire en fiche</button></div><input class="inp dt" placeholder="Chercher : Piaget, mémoire, ANOVA…" oninput="thmS(this.value)" autocomplete="off"><div id="sr"></div>';
   CATS.forEach(function(c){var m={},o=[];D.forEach(function(d,i){if(d[0]==c.id&&on(i)){if(!m[d[1]]){m[d[1]]=[];o.push(d[1])}m[d[1]].push(i)}});if(!o.length)return;var nt=o.reduce(function(a,n){return a+m[n].length},0);
     h+='<div class="box acc" style="--c:'+c.c+';--c2:'+c.c2+'"><button class="acch" onclick="this.parentNode.classList.toggle(\'op\')"><span class="ci sm">'+c.e+'</span><span class="acct"><b>'+c.n+'</b><small>'+o.length+' thème'+(o.length>1?'s':'')+' · '+nt+' cartes</small></span><span class="accv">'+ic("chev")+'</span></button><div class="sbs">';
     o.forEach(function(n){SUBS.push(m[n]);h+='<button class="sb" onclick="'+'subGo('+(SUBS.length-1)+',\''+c.id+'\')">'+esc(n)+' <small>'+m[n].length+'</small></button>'});h+='</div></div>'});
@@ -3248,8 +3331,8 @@ function ysOpen0(){sheet('<h2>Choisir les années</h2><div id="yss">'+ysHTML(TAB
 function ysRef(){var x=document.getElementById("yss");if(x)x.innerHTML=ysHTML(TAB)}
 function ysHTML0(t){var ys=M.ys||[],me=M.yr,n=t=="pp"?PQ.filter(function(q){return ys.indexOf(q[1])>=0}).length:D.filter(function(d,i){return d&&i<BASE&&ys.indexOf(d[4]||2)>=0}).length,k=ys.slice().sort().join(),md=k==String(me)?"me":k==dys(me).join()?"upto":k=="1,2,3,4,5"?"all":"";
   return '<div class="ysc"><div class="ysh"><b>Questions de</b><button class="ysi" onclick="ysHelp()" aria-label="Comment ça marche">?</button></div><div class="ysy">'+[1,2,3,4,5].map(function(y){return '<button class="'+(ys.indexOf(y)>=0?'on':'')+(y==me?' mine':'')+'" onclick="ysTg('+y+')">'+YS[y]+'</button>'}).join("")+'</div><div class="ysq"><button class="'+(md=="me"?'on':'')+'" onclick="ysSet(\'me\')">Mon année</button>'+(me>1?'<button class="'+(md=="upto"?'on':'')+'" onclick="ysSet(\'upto\')">Jusqu\'à la '+YS[me]+'</button>':'')+'<button class="'+(md=="all"?'on':'')+'" onclick="ysSet(\'all\')">Toutes</button></div><p class="ysn"><b>'+n+'</b> question'+(n>1?'s':'')+' · le même choix vaut pour la Révision, Cortex et les QCM</p><p class="ysr">Tu as changé d\'année d\'études ? Mets-la à jour dans les <button onclick="document.querySelectorAll(\'.sh\').forEach(function(x){x.remove()});opts()">'+ic("gear")+' Réglages</button>.</p></div>'}
-function ysTg(y){var k=M.ys.indexOf(y);if(k>=0){if(M.ys.length==1)return pop("Garde au moins une année");M.ys.splice(k,1)}else{M.ys.push(y);M.ys.sort()}save();render();ysRef()}
-function ysSet(m){M.ys=m=="me"?[M.yr]:m=="upto"?dys(M.yr):[1,2,3,4,5];save();render();ysRef()}
+function ysTg0(y){var k=M.ys.indexOf(y);if(k>=0){if(M.ys.length==1)return pop("Garde au moins une année");M.ys.splice(k,1)}else{M.ys.push(y);M.ys.sort()}save();render();ysRef()}
+function ysSet0(m){M.ys=m=="me"?[M.yr]:m=="upto"?dys(M.yr):[1,2,3,4,5];save();render();ysRef()}
 function ysHelp(){var y=YS[M.yr];sheet('<h2>Choisir ses années</h2><p>Tu es en <b>'+y+'</b>. Coche les années dont tu veux les questions :</p><div class="ysex"><div><b>Mon année</b><span>uniquement les questions de '+y+'</span></div>'+(M.yr>1?'<div><b>Années précédentes</b><span>pour revoir les bases des années passées</span></div>':'')+(M.yr<5?'<div><b>Années suivantes</b><span>pour prendre de l\'avance sur la suite</span></div>':'')+'</div><p>Ce choix est commun à la <b>Révision</b>, à <b>Cortex</b> et aux <b>QCM</b> : chaque mode te propose seulement les questions des années cochées.</p>')}
 var TTL={play:["Révision",""],pp:["Cortex","Une bonne réponse par catégorie, le plus vite possible"],qcm:["QCM","Entraîne-toi comme le jour du partiel"],lab:["Labo","Les grandes expériences de la psychologie"],prog:["Progrès","Ton évolution, catégorie par catégorie"]};
 var TIC={play:"rev",pp:"pie",qcm:"qcm",lab:"lab",prog:"chart"},TEY={pp:"Défi chrono",qcm:"Entraînement",lab:"Expériences",prog:"Ton parcours"};
@@ -3280,7 +3363,7 @@ function render(){
   B.className="";chkHash();if((M.tu||0)<3&&!document.querySelector(".sh.tu"))setTimeout(function(){if((M.tu||0)<3&&!document.querySelector(".sh.tu"))tuto()},400);
   A.innerHTML=topHTML()+'<div class="tabs"><button class="tab'+(TAB=="play"?' on':'')+'" onclick="setTab(\'play\')">'+ic("rev")+'<span>Révision</span></button><button class="tab'+(TAB=="pp"?' on':'')+'" onclick="setTab(\'pp\')">'+ic("pie")+'<span>Cortex</span></button><button class="tab'+(TAB=="qcm"?' on':'')+'" onclick="setTab(\'qcm\')">'+ic("qcm")+'<span>QCM</span></button><button class="tab'+(TAB=="lab"?' on':'')+'" onclick="setTab(\'lab\')">'+ic("lab")+'<span>Labo</span></button><button class="tab'+(TAB=="prog"?' on':'')+'" onclick="setTab(\'prog\')">'+ic("chart")+'<span>Progrès</span></button></div>'+(TAB=="play"?playHTML():TAB=="qcm"?qcmHTML():TAB=="pp"?ppHTML():TAB=="lab"?labHTML():progHTML());
 }
-function playHTML(){
+function playHTML0(){
   var dn=ids(function(d,s,i){return due(i)}).length,nc=Object.keys(M.cc||{}).length,ex="";
   if(M.ex){var nd=Math.round((Date.parse(M.ex)-Date.parse(day()))/864e5);if(nd>=0){ex='<div class="tdx">'+ic("cal")+' '+(nd>1?'Prochain partiel dans <b>'+nd+' jours</b>':nd==1?'Prochain partiel <b>demain</b>, courage !':'Partiel <b>aujourd\'hui</b>, bon courage !')+'</div>'}}
   var h='<div class="scr">';
