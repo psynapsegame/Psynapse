@@ -139,6 +139,10 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - **Confusions** : 40 paires (16 ajoutées, dont les premières en `aut`).
 - **Cas cliniques** : 79 (12 cas L1 ajoutés).
 
+### 2.22 Ajouts v99
+- **Relecture des 1 554 anciennes cartes** (réponse, mauvaises réponses, explication) : peu d'erreurs. 8 corrections, appliquées par index dans un bloc `(function(){var F=[[i, "a"|"tr0-2"|"e", ancien, nouveau],…]…})()` placé juste avant `function lvTier(k){`. Pour corriger une réponse, une mauvaise réponse ou une explication, il suffit d'ajouter une ligne à `F`.
+- **Cortex** : 90 questions L1 ajoutées (10 par catégorie), dans un dernier bloc `PQ=PQ.concat`. Il y a maintenant 783 entrées, réparties ainsi par année : 228, 215, 152, 111, 77.
+
 ## 3. Architecture
 
 ### 3.1 Fichiers
@@ -196,7 +200,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Cortex : la réponse tient en un mot, avec ses variantes acceptées.
 
 ### 4.3 Cache — à chaque modification de `index.html`
-- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v98).
+- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v99).
 - La stratégie est « réseau d'abord ». GoatCounter est ignoré. Les chemins doivent rester **relatifs**.
 
 ## 5. Hébergement
