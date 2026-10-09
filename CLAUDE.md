@@ -114,6 +114,12 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - **Années** : `ysTg`/`ysSet` (anciennes versions renommées `ysTg0`/`ysSet0`) rafraîchissent `thm()` au lieu de `render()` quand on est sur cette page (`ysRf`).
 - **Atlas 3D** : matériau physique (sheen, clearcoat), tone mapping ACES, poids de lobes adoucis par sommet (`W`, mélange aux frontières), sillon central creusé, tronc cérébral en `LatheGeometry`, ombre au sol, lente rotation au repos (reprise 5 s après le dernier toucher, coupée par `M.rm`), étiquette `at3Tag` au point touché.
 
+### 2.18 Ajouts v95
+- **Zoom bloqué** : viewport `maximum-scale=1, user-scalable=no`, `touch-action:manipulation` (pas de zoom par double-tape) et `preventDefault` sur `gesturestart/change/end` et sur `touchmove` à deux doigts, sauf sur le canvas `.at3c` qui garde son pincement.
+- **Débordement horizontal coupé** (`overflow-x:clip` sur `html, body`) : l'animation d'arrivée des cartes dépassait de l'écran, ce qui provoquait un défilement de côté une fois le zoom bloqué.
+- **Cerveau 3D** : carte d'environnement (PMREM) pour des reflets doux, sillons teintés en profondeur (`SUL`), maillage 240×180, face interne lissée (plus de stries), structures profondes en matériau vernis légèrement lumineux, couleurs de lobes plus douces.
+- **Tutoriel** : pages 7 et 8 réécrites (« Réviser mes cartes », « Niveau des questions »).
+
 ## 3. Architecture
 
 ### 3.1 Fichiers
@@ -171,7 +177,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Cortex : la réponse tient en un mot, avec ses variantes acceptées.
 
 ### 4.3 Cache — à chaque modification de `index.html`
-- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v94).
+- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v95).
 - La stratégie est « réseau d'abord ». GoatCounter est ignoré. Les chemins doivent rester **relatifs**.
 
 ## 5. Hébergement
