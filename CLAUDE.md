@@ -95,12 +95,18 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 
 ### 2.15 Ajouts v92
 - **Cas cliniques** : `VG` (`{c, y, t, v, q, o:[4 options, la bonne en premier], e}`), écrans `vgList()`, `vgShow(k)`, `vgA(j)`, `vgRnd()`. Les options sont mélangées à l'affichage. Filtre par années via `M.ys`. Cas réussis dans `M.vg[k]`, +5 XP la première fois.
-- **Atlas du cerveau** : `ATR` (13 zones : 6 lobes et structures en mode 0, 7 aires corticales en mode 1), `atSvg(mode, surbrillance, états)`, quiz `atGo`/`atQ`/`atA` (toucher la zone) / `atF` (retrouver la fonction). Record dans `M.atl`, +2 XP par bonne réponse. Les lobes sont découpés par `clip-path` sur le contour `ATO`.
+- **Atlas du cerveau** : remplacé en v93 par l'atlas 3D (§2.16).
 - **Confusions** : 24 paires (6 ajoutées).
 - **Synthèses** : `FSY` couvre maintenant tous les sous-thèmes non-auteurs (62).
 - **Clavier Cortex** : plus de `backdrop-filter` sur `.vkb` (recalcul du flou coûteux sur iOS à chaque touche), calque isolé, pas de transition sur les touches, bulle positionnée en `transform` et géométrie lue avant les écritures (`vkGeo`).
 - **Labo** : couleurs alignées sur la palette des catégories (Stroop `SCA`, cécité `CBC`, Go/No-Go `GNR`) ; boutons du dilemme en style « verre » vert et rouge.
 - **Frise** : dates relues ; Ekman (mort en 2025) et Rosenthal (mort en 2024) corrigés.
+
+### 2.16 Ajouts v93
+- **Atlas 3D** : `three.module.min.js` (three.js r160, licence MIT) est un fichier du dépôt, chargé à la demande par `import("./three.module.min.js")` quand on ouvre l'atlas (il se met en cache via le service worker). Le cerveau est généré par le code : `at3Hemi` sculpte chaque hémisphère (ellipsoïde déformé et bruit de Perlin « ridged » pour les circonvolutions) et attribue à chaque sommet un lobe (`L`) et une aire (`A`). Cervelet, tronc et structures profondes sont des maillages à part. Zones et textes dans `ATZ` (`m` : 0 lobes, 1 aires, 2 intérieur, −1 toujours visible). Modes `at3Mode(0|1|2)`, rotation au doigt, pincement pour zoomer, toucher = fiche « Son rôle / Si elle est lésée ». Quiz `atGo`/`atQ`/`atA(id)`/`atF`, record `M.atl`. Repère : x > 0 = hémisphère **gauche** (Broca et Wernicke y sont), z = avant.
+- **Sélecteur d'années** : `ysLine` (carte avec les 5 années touchables directement) et `ysHTML`/`ysOpen` (choix rapides en boutons radio + choix à la carte avec le nombre de questions). Les anciennes versions sont renommées `ysLine0`, `ysHTML0`, `ysOpen0`.
+- **Clavier Cortex** : disposition AZERTY de l'iPhone (touche Maj ponctuelle, page 123 avec ponctuation), `vkHit` envoie chaque toucher à la touche la plus proche (plus de zone morte entre les touches). Anciennes fonctions renommées `vkKeys0`, `vkP0`.
+- Divers : boutons `.hb` (maison, signalement) dorés ; confusions classées par catégorie ; « Faux ! » remplace « Pas tout à fait. » ; l'annotation « cartes maîtrisées » de l'accueil est retirée.
 
 ## 3. Architecture
 
@@ -110,7 +116,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
   - `sw.js` ;
   - `manifest.webmanifest` ;
   - les icônes et 10 écrans de démarrage `splash-*.png`.
-- En pratique, seuls `index.html` et `sw.js` changent.
+- En pratique, seuls `index.html` et `sw.js` changent. `three.module.min.js` (v93) sert uniquement à l'atlas 3D.
 - **Ne jamais lire ni réécrire `index.html` en entier.** Utiliser Grep et des remplacements exacts, par exemple un script qui vérifie avec `assert` le nombre d'occurrences.
 
 ### 3.2 Globales clés
@@ -159,7 +165,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Cortex : la réponse tient en un mot, avec ses variantes acceptées.
 
 ### 4.3 Cache — à chaque modification de `index.html`
-- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v92).
+- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v93).
 - La stratégie est « réseau d'abord ». GoatCounter est ignoré. Les chemins doivent rester **relatifs**.
 
 ## 5. Hébergement
@@ -182,7 +188,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
   - `navigator.vibrate` est absent ;
   - `:has()` demande iOS 15.4 ou plus ;
   - clavier Cortex et haptique jamais testés sur un vrai iPhone.
-- Tests : Chromium avec Playwright, aux tailles iPhone SE (320×568), iPhone 13 (390×664), iPad et PC.
+- Tests : Chromium avec Playwright (pour l'atlas 3D, servir le dossier en HTTP, par exemple `python3 -m http.server`, et lancer Chromium avec SwiftShader), aux tailles iPhone SE (320×568), iPhone 13 (390×664), iPad et PC.
   - Vérifier qu'il n'y a aucune erreur JS ni débordement horizontal.
   - Parcours : profil → tuto → révision → thème → carte perso → QCM → Cortex → Labo → Progrès → réglages.
 - Les contenus de `FSY`, `AUTH` et `EVT` ont été rédigés par un modèle et seulement en partie vérifiés.
