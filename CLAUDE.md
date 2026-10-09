@@ -80,7 +80,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Sons via `snd`. Haptique via `tick()` et `hap()` (switch iOS 18+, jamais testé sur un vrai iPhone).
 
 ### 2.12 Fonctions privées — NE PAS TOUCHER
-- `mimCard()`, `mimFlip`, `mimDay()` et le code qui les déclenche. Ne rien changer, et ne rien documenter de plus à leur sujet.
+- Les fonctions `ql…` (`qlOk`, `qlCard`, `qlFlip`, `qlBurst`, `qlDay`, `qlDec`, `qlHash`, `qlKey`) et leurs appels dans `thmS` et `exSet`. Leurs textes et leurs déclencheurs sont volontairement encodés. Ne rien changer, ne jamais les décoder ni les afficher en clair, et ne rien documenter de plus à leur sujet.
 
 ## 3. Architecture
 
@@ -139,7 +139,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Cortex : la réponse tient en un mot, avec ses variantes acceptées.
 
 ### 4.3 Cache — à chaque modification de `index.html`
-- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v88).
+- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v89).
 - La stratégie est « réseau d'abord ». GoatCounter est ignoré. Les chemins doivent rester **relatifs**.
 
 ## 5. Hébergement
