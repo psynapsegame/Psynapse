@@ -94,7 +94,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - **Labo** : 32 listes DRM (`DRL`) et 46 mots distracteurs (`DRP`), 7 règles Go/No-Go (`GNR`), 10 formes pour la cécité au changement (`CBS`, indices calculés avec `CBS.length`), 14 caractères pour la rotation mentale (`RML`, sans axe de symétrie miroir), 10 stratégies au dilemme du prisonnier (`PDS`). `lbPick(clé, n)` évite de retomber sur une liste, une règle ou un adversaire récent (historique dans `M.lr`).
 
 ### 2.15 Ajouts v92
-- **Cas cliniques** : `VG` (`{c, y, t, v, q, o:[4 options, la bonne en premier], e}`), écrans `vgList()`, `vgShow(k)`, `vgA(j)`, `vgRnd()`. Les options sont mélangées à l'affichage. Filtre par années via `M.ys`. Cas réussis dans `M.vg[k]`, +5 XP la première fois.
+- **Cas cliniques** : `VG` (`{c, y, t, v, q, o:[4 options, la bonne en premier], e}`), écrans `vgList()`, `vgShow(k)`, `vgA(j)`, `vgRnd()`. Les options sont mélangées à l'affichage. Depuis v97, la liste montre tous les cas, sans filtre d'années (seul `vgRnd()` privilégie les années de `M.ys`). Cas réussis dans `M.vg[k]`, +5 XP la première fois.
 - **Atlas du cerveau** : remplacé en v93 par l'atlas 3D (§2.16).
 - **Confusions** : 24 paires (6 ajoutées).
 - **Synthèses** : `FSY` couvre maintenant tous les sous-thèmes non-auteurs (62).
@@ -109,7 +109,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Divers : boutons `.hb` (maison, signalement) dorés ; confusions classées par catégorie ; « Faux ! » remplace « Pas tout à fait. » ; l'annotation « cartes maîtrisées » de l'accueil est retirée.
 
 ### 2.17 Ajouts v94
-- **Page Révision** (`playHTML`) : plus de grille de catégories. Elle affiche la carte du jour, puis la grande carte « Réviser mes cartes » (`thm()`), puis 6 tuiles `.rvt` (Confusions, Cas cliniques, Atlas, Histoire, Mes cartes, Mes erreurs).
+- **Page Révision** (`playHTML`) : plus de grille de catégories. Elle affiche la grande carte « Réviser mes cartes » (`thm()`), puis 6 tuiles `.rvt` (Confusions, Cas cliniques, Atlas, Histoire, Mes cartes, Mes erreurs).
 - **« Réviser mes cartes »** (`thm`) : recherche (garde `thmS` et `#sr`), mode S'entraîner / Lire en fiche (`TM`), rappel des années (`ysOpen`), bouton « Toutes les catégories » (`start('all')`), puis une carte dépliable par catégorie (`RVO` garde l'état ouvert) avec « Réviser toute la catégorie » (`start(id)`) et la liste des thèmes (`subGo`), chacun avec sa barre de maîtrise. `rvStat(f)` calcule total, maîtrisées, à revoir et nouvelles.
 - **Années** : `ysTg`/`ysSet`  rafraîchissent `thm()` au lieu de `render()` quand on est sur cette page (`ysRf`).
 - **Atlas 3D** : matériau physique (sheen, clearcoat), tone mapping ACES, poids de lobes adoucis par sommet (`W`, mélange aux frontières), sillon central creusé, tronc cérébral en `LatheGeometry`, ombre au sol, lente rotation au repos (reprise 5 s après le dernier toucher, coupée par `M.rm`), étiquette `at3Tag` au point touché.
@@ -122,9 +122,16 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 
 ### 2.19 Ajouts v96
 - **Progrès** : deux onglets seulement, « Vue d’ensemble » et « Suivi des cartes » (ex-« Mes cartes », renommé pour ne pas le confondre avec les cartes perso). L'onglet « Catégories » est supprimé, car la maîtrise par catégorie et par thème est dans « Réviser mes cartes » (`PGT=='cat'` est ramené à `'vue'`).
-- **QCM ciblé** : dans « Réviser mes cartes », bouton « QCM » par catégorie (`rvQcmC(id)`) et par thème d'au moins 4 cartes (`rvQcm(k)`), via `QERR` puis `qzGo()`.
+- **QCM ciblé** : retiré en v97 à la demande du propriétaire.
 - **Cas cliniques** : 41 (20 ajoutés à la fin de `VG`, surtout en M1-M2 et en neuropsychologie).
 - **Nettoyage** : suppression des anciennes fonctions remplacées (`playHTML0`, `thm0`, `ysLine0`, `ysHTML0`, `ysOpen0`, `ysTg0`, `ysSet0`, `vkKeys0`, `vkP0`).
+
+### 2.20 Ajouts v97
+- **Carte « Aujourd'hui » supprimée** de l'accueil Révision. Ses infos passent dans la grande carte « Réviser mes cartes » (« Aujourd'hui · N à revoir », objectif x/20). Le compte à rebours du partiel est affiché juste dessous (`.tdx.rvex`). Dans `thm()`, le bouton « À revoir aujourd'hui » (`.rvdu`, `start('due')`) apparaît au-dessus de « Toutes les catégories » s'il y a des cartes dues.
+- **Plus de boutons QCM** dans « Réviser mes cartes » : « Réviser toute la catégorie » reprend toute la largeur.
+- **Ordre alphabétique** (affichage seulement, les index ne changent pas) : `az(a,b)` (`localeCompare` en français) et `catsAZ()`. Il s'applique aux catégories et thèmes de `thm()`, aux pastilles du QCM (« Toutes » reste en dernier), aux expériences du Labo, aux confusions et aux cas cliniques.
+- **Niveau des questions** (`ysHTML`) : deux blocs encadrés `.yzs` (« Choix rapide », puis « Ou choisis à la carte » avec une aide `.yzlh`), et le rappel vers les réglages devient un bouton-carte `button.yzn`.
+- **Cas cliniques** : 67 (26 ajoutés à la fin de `VG`, surtout en L1-L2 et dans les catégories qui n'en avaient pas : cognition, sociale, neurosciences, appliquée, méthodologie). La liste est groupée par catégorie comme les confusions, triée par année puis par titre.
 
 ## 3. Architecture
 
@@ -170,7 +177,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Polices : Plus Jakarta Sans pour l'interface, Fraunces pour les titres et les questions.
 - Couleurs des catégories : toujours passer par `cat(id)`, et elles doivent rester distinctes. Cognition #7E86FF, Dév #FF8A3D, Sociale #FF63B0, Neuro #3DD97A, Neuropsy #25E0D0, Clinique #4FA8FF, Appliquée #B5E04A, Méthodo #C77BFF, Auteurs #FF5468.
 - **Pas de mode clair** : refusé par le propriétaire. Respecter `prefers-reduced-motion` et `M.rm`.
-- Page Révision (v94) : carte du jour, grande carte « Réviser mes cartes », puis 6 tuiles dans cet ordre : Confusions, Cas cliniques, Atlas du cerveau, Histoire, Mes cartes, Mes erreurs.
+- Page Révision (v97) : grande carte « Réviser mes cartes », puis 6 tuiles dans cet ordre : Confusions, Cas cliniques, Atlas du cerveau, Histoire, Mes cartes, Mes erreurs.
 - Fenêtres : `sheet()` ou `.sh`. Messages courts : `pop()`.
 - Le CSS est en couches : plus loin dans le fichier = prioritaire, avec beaucoup de `!important`.
   - Insérer le nouveau CSS juste avant `button:focus-visible{`, et le nouveau JS juste avant `function lvTier(k){` (une seule occurrence de chacun, vérifié).
@@ -183,7 +190,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Cortex : la réponse tient en un mot, avec ses variantes acceptées.
 
 ### 4.3 Cache — à chaque modification de `index.html`
-- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v96).
+- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v97).
 - La stratégie est « réseau d'abord ». GoatCounter est ignoré. Les chemins doivent rester **relatifs**.
 
 ## 5. Hébergement
