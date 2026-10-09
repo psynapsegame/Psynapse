@@ -108,6 +108,12 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - **Clavier Cortex** : disposition AZERTY de l'iPhone (touche Maj ponctuelle, page 123 avec ponctuation), `vkHit` envoie chaque toucher à la touche la plus proche (plus de zone morte entre les touches). Anciennes fonctions renommées `vkKeys0`, `vkP0`.
 - Divers : boutons `.hb` (maison, signalement) dorés ; confusions classées par catégorie ; « Faux ! » remplace « Pas tout à fait. » ; l'annotation « cartes maîtrisées » de l'accueil est retirée.
 
+### 2.17 Ajouts v94
+- **Page Révision** (`playHTML`, l'ancienne est renommée `playHTML0`) : plus de grille de catégories. Elle affiche la carte du jour, puis la grande carte « Réviser mes cartes » (`thm()`), puis 6 tuiles `.rvt` (Confusions, Cas cliniques, Atlas, Histoire, Mes cartes, Mes erreurs).
+- **« Réviser mes cartes »** (`thm`, l'ancienne est renommée `thm0`) : recherche (garde `thmS` et `#sr`), mode S'entraîner / Lire en fiche (`TM`), rappel des années (`ysOpen`), bouton « Toutes les catégories » (`start('all')`), puis une carte dépliable par catégorie (`RVO` garde l'état ouvert) avec « Réviser toute la catégorie » (`start(id)`) et la liste des thèmes (`subGo`), chacun avec sa barre de maîtrise. `rvStat(f)` calcule total, maîtrisées, à revoir et nouvelles.
+- **Années** : `ysTg`/`ysSet` (anciennes versions renommées `ysTg0`/`ysSet0`) rafraîchissent `thm()` au lieu de `render()` quand on est sur cette page (`ysRf`).
+- **Atlas 3D** : matériau physique (sheen, clearcoat), tone mapping ACES, poids de lobes adoucis par sommet (`W`, mélange aux frontières), sillon central creusé, tronc cérébral en `LatheGeometry`, ombre au sol, lente rotation au repos (reprise 5 s après le dernier toucher, coupée par `M.rm`), étiquette `at3Tag` au point touché.
+
 ## 3. Architecture
 
 ### 3.1 Fichiers
@@ -152,7 +158,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Polices : Plus Jakarta Sans pour l'interface, Fraunces pour les titres et les questions.
 - Couleurs des catégories : toujours passer par `cat(id)`, et elles doivent rester distinctes. Cognition #7E86FF, Dév #FF8A3D, Sociale #FF63B0, Neuro #3DD97A, Neuropsy #25E0D0, Clinique #4FA8FF, Appliquée #B5E04A, Méthodo #C77BFF, Auteurs #FF5468.
 - **Pas de mode clair** : refusé par le propriétaire. Respecter `prefers-reduced-motion` et `M.rm`.
-- Cartes de menu (`.qa2 button`) : toutes identiques. Ordre : Réviser un thème, Confusions fréquentes, Cas cliniques, Atlas du cerveau, Histoire, Mes cartes, Mes erreurs.
+- Page Révision (v94) : carte du jour, grande carte « Réviser mes cartes », puis 6 tuiles dans cet ordre : Confusions, Cas cliniques, Atlas du cerveau, Histoire, Mes cartes, Mes erreurs.
 - Fenêtres : `sheet()` ou `.sh`. Messages courts : `pop()`.
 - Le CSS est en couches : plus loin dans le fichier = prioritaire, avec beaucoup de `!important`.
   - Insérer le nouveau CSS juste avant `button:focus-visible{`, et le nouveau JS juste avant `function lvTier(k){` (une seule occurrence de chacun, vérifié).
@@ -165,7 +171,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Cortex : la réponse tient en un mot, avec ses variantes acceptées.
 
 ### 4.3 Cache — à chaque modification de `index.html`
-- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v93).
+- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v94).
 - La stratégie est « réseau d'abord ». GoatCounter est ignoré. Les chemins doivent rester **relatifs**.
 
 ## 5. Hébergement
