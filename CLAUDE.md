@@ -55,7 +55,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Le succès « Correcteur » a été retiré volontairement. Les textes disent « des succès », jamais un nombre fixe.
 
 ### 2.7 Progrès (`progHTML()`)
-- Vue d'ensemble, barre de niveau cliquable, maîtrise par catégorie et « Mes cartes ».
+- Vue d'ensemble (barre de niveau cliquable) et « Suivi des cartes » (v96).
 - Le graphique « cette semaine » a été supprimé volontairement.
 
 ### 2.8 Mes erreurs (`errPg()`)
@@ -104,14 +104,14 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 
 ### 2.16 Ajouts v93
 - **Atlas 3D** : `three.module.min.js` (three.js r160, licence MIT) est un fichier du dépôt, chargé à la demande par `import("./three.module.min.js")` quand on ouvre l'atlas (il se met en cache via le service worker). Le cerveau est généré par le code : `at3Hemi` sculpte chaque hémisphère (ellipsoïde déformé et bruit de Perlin « ridged » pour les circonvolutions) et attribue à chaque sommet un lobe (`L`) et une aire (`A`). Cervelet, tronc et structures profondes sont des maillages à part. Zones et textes dans `ATZ` (`m` : 0 lobes, 1 aires, 2 intérieur, −1 toujours visible). Modes `at3Mode(0|1|2)`, rotation au doigt, pincement pour zoomer, toucher = fiche « Son rôle / Si elle est lésée ». Quiz `atGo`/`atQ`/`atA(id)`/`atF`, record `M.atl`. Repère : x > 0 = hémisphère **gauche** (Broca et Wernicke y sont), z = avant.
-- **Sélecteur d'années** : `ysLine` (carte avec les 5 années touchables directement) et `ysHTML`/`ysOpen` (choix rapides en boutons radio + choix à la carte avec le nombre de questions). Les anciennes versions sont renommées `ysLine0`, `ysHTML0`, `ysOpen0`.
-- **Clavier Cortex** : disposition AZERTY de l'iPhone (touche Maj ponctuelle, page 123 avec ponctuation), `vkHit` envoie chaque toucher à la touche la plus proche (plus de zone morte entre les touches). Anciennes fonctions renommées `vkKeys0`, `vkP0`.
+- **Sélecteur d'années** : `ysLine` (carte avec les 5 années touchables directement) et `ysHTML`/`ysOpen` (choix rapides en boutons radio + choix à la carte avec le nombre de questions). (anciennes versions supprimées en v96).
+- **Clavier Cortex** : disposition AZERTY de l'iPhone (touche Maj ponctuelle, page 123 avec ponctuation), `vkHit` envoie chaque toucher à la touche la plus proche (plus de zone morte entre les touches). (anciennes versions supprimées en v96).
 - Divers : boutons `.hb` (maison, signalement) dorés ; confusions classées par catégorie ; « Faux ! » remplace « Pas tout à fait. » ; l'annotation « cartes maîtrisées » de l'accueil est retirée.
 
 ### 2.17 Ajouts v94
-- **Page Révision** (`playHTML`, l'ancienne est renommée `playHTML0`) : plus de grille de catégories. Elle affiche la carte du jour, puis la grande carte « Réviser mes cartes » (`thm()`), puis 6 tuiles `.rvt` (Confusions, Cas cliniques, Atlas, Histoire, Mes cartes, Mes erreurs).
-- **« Réviser mes cartes »** (`thm`, l'ancienne est renommée `thm0`) : recherche (garde `thmS` et `#sr`), mode S'entraîner / Lire en fiche (`TM`), rappel des années (`ysOpen`), bouton « Toutes les catégories » (`start('all')`), puis une carte dépliable par catégorie (`RVO` garde l'état ouvert) avec « Réviser toute la catégorie » (`start(id)`) et la liste des thèmes (`subGo`), chacun avec sa barre de maîtrise. `rvStat(f)` calcule total, maîtrisées, à revoir et nouvelles.
-- **Années** : `ysTg`/`ysSet` (anciennes versions renommées `ysTg0`/`ysSet0`) rafraîchissent `thm()` au lieu de `render()` quand on est sur cette page (`ysRf`).
+- **Page Révision** (`playHTML`) : plus de grille de catégories. Elle affiche la carte du jour, puis la grande carte « Réviser mes cartes » (`thm()`), puis 6 tuiles `.rvt` (Confusions, Cas cliniques, Atlas, Histoire, Mes cartes, Mes erreurs).
+- **« Réviser mes cartes »** (`thm`) : recherche (garde `thmS` et `#sr`), mode S'entraîner / Lire en fiche (`TM`), rappel des années (`ysOpen`), bouton « Toutes les catégories » (`start('all')`), puis une carte dépliable par catégorie (`RVO` garde l'état ouvert) avec « Réviser toute la catégorie » (`start(id)`) et la liste des thèmes (`subGo`), chacun avec sa barre de maîtrise. `rvStat(f)` calcule total, maîtrisées, à revoir et nouvelles.
+- **Années** : `ysTg`/`ysSet`  rafraîchissent `thm()` au lieu de `render()` quand on est sur cette page (`ysRf`).
 - **Atlas 3D** : matériau physique (sheen, clearcoat), tone mapping ACES, poids de lobes adoucis par sommet (`W`, mélange aux frontières), sillon central creusé, tronc cérébral en `LatheGeometry`, ombre au sol, lente rotation au repos (reprise 5 s après le dernier toucher, coupée par `M.rm`), étiquette `at3Tag` au point touché.
 
 ### 2.18 Ajouts v95
@@ -119,6 +119,12 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - **Débordement horizontal coupé** (`overflow-x:clip` sur `html, body`) : l'animation d'arrivée des cartes dépassait de l'écran, ce qui provoquait un défilement de côté une fois le zoom bloqué.
 - **Cerveau 3D** : carte d'environnement (PMREM) pour des reflets doux, sillons teintés en profondeur (`SUL`), maillage 240×180, face interne lissée (plus de stries), structures profondes en matériau vernis légèrement lumineux, couleurs de lobes plus douces.
 - **Tutoriel** : pages 7 et 8 réécrites (« Réviser mes cartes », « Niveau des questions »).
+
+### 2.19 Ajouts v96
+- **Progrès** : deux onglets seulement, « Vue d’ensemble » et « Suivi des cartes » (ex-« Mes cartes », renommé pour ne pas le confondre avec les cartes perso). L'onglet « Catégories » est supprimé, car la maîtrise par catégorie et par thème est dans « Réviser mes cartes » (`PGT=='cat'` est ramené à `'vue'`).
+- **QCM ciblé** : dans « Réviser mes cartes », bouton « QCM » par catégorie (`rvQcmC(id)`) et par thème d'au moins 4 cartes (`rvQcm(k)`), via `QERR` puis `qzGo()`.
+- **Cas cliniques** : 41 (20 ajoutés à la fin de `VG`, surtout en M1-M2 et en neuropsychologie).
+- **Nettoyage** : suppression des anciennes fonctions remplacées (`playHTML0`, `thm0`, `ysLine0`, `ysHTML0`, `ysOpen0`, `ysTg0`, `ysSet0`, `vkKeys0`, `vkP0`).
 
 ## 3. Architecture
 
@@ -177,7 +183,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Cortex : la réponse tient en un mot, avec ses variantes acceptées.
 
 ### 4.3 Cache — à chaque modification de `index.html`
-- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v95).
+- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v96).
 - La stratégie est « réseau d'abord ». GoatCounter est ignoré. Les chemins doivent rester **relatifs**.
 
 ## 5. Hébergement
