@@ -143,6 +143,14 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - **Relecture des 1 554 anciennes cartes** (réponse, mauvaises réponses, explication) : peu d'erreurs. 8 corrections, appliquées par index dans un bloc `(function(){var F=[[i, "a"|"tr0-2"|"e", ancien, nouveau],…]…})()` placé juste avant `function lvTier(k){`. Pour corriger une réponse, une mauvaise réponse ou une explication, il suffit d'ajouter une ligne à `F`.
 - **Cortex** : 90 questions L1 ajoutées (10 par catégorie), dans un dernier bloc `PQ=PQ.concat`. Il y a maintenant 783 entrées, réparties ainsi par année : 228, 215, 152, 111, 77.
 
+### 2.23 Ajouts v100 (retours d'une utilisatrice)
+- **Mes matières** (`M.mt` : liste d'id, absente = toutes ; `MTA` = ordre fixe des 11 matières). `mtOn(id)` filtre `on(i)` et `catsAZ()`, donc la Révision, les QCM, les Confusions et les Cas cliniques. `mtSync()` recalcule `PCS` : le camembert de Cortex a autant de parts que de matières (`2*Math.PI/PCS.length`), et un record garde son nombre de parts (`e.n`). Fenêtre `mtOpen()`/`mtTg(id)` (2 matières au minimum ; une partie Cortex en cours est abandonnée si on change). Raccourcis dans les Réglages, dans « Réviser mes cartes » et sous les pastilles du QCM.
+- **Nouvelles matières** : `sta` (Statistiques, #F06BE6) et `ang` (Anglais, #FFD84D). « Neurosciences » devient « Biologie & neurosciences » et « Méthodologie & statistiques » devient « Méthodologie ». Un bloc placé après le dernier `PQ=PQ.concat` déplace vers `sta`, au chargement, les cartes `met` des sous-thèmes Tests statistiques, Interprétation et Analyses avancées, leurs synthèses `FSY`, 53 questions Cortex (par index), la confusion sur les erreurs de type I/II et le cas « p = 0,03 ». **Les nouveaux blocs `PQ=PQ.concat` se placent avant ce bloc.**
+- **Anglais** : 120 cartes (6 sous-thèmes : vocabulaire par domaine, lire un article scientifique, faux amis), 60 questions Cortex et 6 synthèses. `BASE` = 1 744 et `PQ` = 843 entrées.
+- **Cartes perso** : `M.cc[k] = [question, réponse, matière, [3 fausses réponses]]` (les deux derniers sont facultatifs, et les anciennes cartes restent valides). `ccS()` les range par matière, avec « Réviser » et « QCM » par matière (`ccQcm`, 4 cartes au minimum). Dans le formulaire `ccNew`, « Proposer » (`ccSug` : cartes proches de la banque et leurs `TR`) ou « Demander à une IA » (`ccAIc` copie un message à coller dans Claude ou ChatGPT, et `ccPaste` remplit les 3 champs avec la réponse). Sans fausses réponses, le QCM utilise `ccSug`. `qzGo` accepte les cartes perso dans `QERR`. Le partage et l'import transportent aussi la matière et les fausses réponses.
+- **Labo** rangé par fonction évaluée (`LBG` : groupe et ce que mesure le test), groupes et tests par ordre alphabétique. Classe `.lbgr` (`.lbg` existait déjà).
+- `.pop` passe à la ligne au lieu de déborder sur petit écran.
+
 ## 3. Architecture
 
 ### 3.1 Fichiers
@@ -167,7 +175,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 ### 3.3 Banque de questions
 - `var D=[...]` est suivi de nombreux blocs `D=D.concat([...])`.
 - Carte : `[catId, "Sous-thème", "Question", "Réponse", année]`.
-  - `catId` ∈ cog, dev, soc, neu, npsy, cli, app, met, aut.
+  - `catId` ∈ cog, dev, soc, neu, npsy, cli, app, met, aut, ang (v100). `sta` est attribuée au chargement (§2.23).
   - Année de 1 à 5 ; si elle est absente, la carte compte comme L2.
 - Répartition (v91) : L1 292, L2 546, L3 289, M1 239, M2 188. Il y a 184 sous-thèmes, dont 122 auteurs pour `aut` (v91 a créé « Émotion » en cog, « Psychologie légale » et « Psychologie environnementale » en app). Le dernier bloc `D=D.concat` (v91, notions absentes) est juste avant `var BASE=D.length` ; le dernier bloc `PQ=PQ.concat` doit rester le dernier.
 
@@ -185,7 +193,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Fond encre sombre, accents or (`#F2C14E`), panneaux « verre », icônes ligne.
 - Valeurs effectives : `--bg #130F25`, `--panel #1D1838`, `--panel2 #262043`, `--ink #F4F2FF`, `--mut #A9A3CC`, `--acc #7B5CFF`. Le premier `:root` a d'autres valeurs, mais elles sont écrasées plus loin.
 - Polices : Plus Jakarta Sans pour l'interface, Fraunces pour les titres et les questions.
-- Couleurs des catégories : toujours passer par `cat(id)`, et elles doivent rester distinctes. Cognition #7E86FF, Dév #FF8A3D, Sociale #FF63B0, Neuro #3DD97A, Neuropsy #25E0D0, Clinique #4FA8FF, Appliquée #B5E04A, Méthodo #C77BFF, Auteurs #FF5468.
+- Couleurs des catégories : toujours passer par `cat(id)`, et elles doivent rester distinctes. Cognition #7E86FF, Dév #FF8A3D, Sociale #FF63B0, Neuro #3DD97A, Neuropsy #25E0D0, Clinique #4FA8FF, Appliquée #B5E04A, Méthodo #C77BFF, Auteurs #FF5468, Statistiques #F06BE6, Anglais #FFD84D.
 - **Pas de mode clair** : refusé par le propriétaire. Respecter `prefers-reduced-motion` et `M.rm`.
 - Page Révision (v97) : grande carte « Réviser mes cartes », puis 6 tuiles dans cet ordre : Confusions, Cas cliniques, Atlas du cerveau, Histoire, Mes cartes, Mes erreurs.
 - Fenêtres : `sheet()` ou `.sh`. Messages courts : `pop()`.
@@ -200,7 +208,7 @@ Ce fichier reprend le brief de passation de la conversation d'origine (état v88
 - Cortex : la réponse tient en un mot, avec ses variantes acceptées.
 
 ### 4.3 Cache — à chaque modification de `index.html`
-- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v99).
+- Incrémenter `const C='psynapse-vNN'` dans `sw.js` (actuellement v100).
 - La stratégie est « réseau d'abord ». GoatCounter est ignoré. Les chemins doivent rester **relatifs**.
 
 ## 5. Hébergement
